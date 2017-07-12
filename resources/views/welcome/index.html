@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Mevn Stack v1</title>
+    <link rel="stylesheet" href="bower_components/bulma/css/bulma.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- HEADER -->
+      <section class="hero is-info is-medium">
+        <!-- Hero header: will stick at the top -->
+        <div class="hero-head">
+          <header class="nav">
+            <div class="container">
+              <div class="nav-left">
+                <a class="nav-item">
+                  Mevn Stack Framework v1
+                </a>
+              </div>
+              <span class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+              <div class="nav-right nav-menu">
+                <a class="nav-item is-active">
+                  Home
+                </a>
+                <a class="nav-item">
+                  Examples
+                </a>
+                <a class="nav-item">
+                  Documentation
+                </a>
+                <span class="nav-item">
+                  <a class="button is-primary is-inverted">
+                    <span class="icon">
+                      <i class="fa fa-github"></i>
+                    </span>
+                    <span>Download</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </header>
+        </div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              Single Page Application
+            </h1>
+            <h2 class="subtitle">
+              Laracasts Demo
+            </h2>
+          </div>
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot">
+          <nav class="tabs is-boxed">
+            <div class="container">
+              <ul>
+                <router-link tag="li" to="/" exact>
+                  <a>Home</a>
+                </router-link>
+                <router-link tag="li" to="/about" exact>
+                  <a>About</a>
+                </router-link>
+                <router-link tag="li" to="/contact" exact>
+                  <a>Contact</a>
+                </router-link>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+      <!-- CONTAINER -->
+      <section class="section">
+        <div class="container">
+          <router-view></router-view>
+        </div>
+      </section>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>

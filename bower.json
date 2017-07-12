@@ -1,0 +1,20 @@
+{
+  "name": "mean-stack-framework",
+  "description": "Abel's Mean Framework",
+  "authors": [
+    "John Conrad Lumacad <jcmlumacad@tmj.ph>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jcmlumacad/mean-stack-framework",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bulma": "^0.4.2",
+    "font-awesome": "^4.7.0"
+  }
+}
