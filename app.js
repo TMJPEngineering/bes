@@ -27,8 +27,7 @@ compress(app)
 // Libraries for client-side
 app.use('/bower_components', express.static(`${__dirname}/bower_components`))
 // Assets: JS & CSS
-app.use('/js', express.static(`${__dirname}/public/js`))
-app.use('/css', express.static(`${__dirname}/public/css`))
+app.use('/assets', express.static(`${__dirname}/public/assets`))
 // HTML Files
 app.use('/views', express.static(`${__dirname}/resources/views`))
 
