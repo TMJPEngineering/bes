@@ -10,7 +10,7 @@ const port = env.NODE_PORT || 3000;
 
 // If the development is for testing purpose or development. Use 'development'
 if (env.NODE_ENV === 'development') {
-    env.APP_URL = `${env.APP_URL}:${port}`
+    env.APP_URL = `${env.APP_URL}:${port}`;
 }
 
 // Socket configuration
