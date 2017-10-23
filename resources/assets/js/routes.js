@@ -1,24 +1,9 @@
-import VueRouter from 'vue-router'
-import Home from '~/modules/Welcome/Client/Components/Home'
-import About from '~/modules/Welcome/Client/Components/About'
-import Contact from '~/modules/Welcome/Client/Components/Contact'
+import VueRouter from 'vue-router';
 
-let routes = [
-    {
-        path: '/',
-        component: Home
-    },
-    {
-        path: '/about',
-        component: About
-    },
-    {
-        path: '/contact',
-        component: Contact
-    }
-]
+let routes = [];
 
 export default new VueRouter({
     routes,
-    linkActiveClass: 'is-active'
-})
+    mode: 'history'
+    // linkActiveClass: 'is-active'
+});

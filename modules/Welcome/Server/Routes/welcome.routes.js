@@ -1,7 +1,7 @@
-import route from '~/vendor/router'
+/* global Route */
 
 export default () => {
-    route.setModule('Welcome')
+    Route.setModule('Welcome')
 
-    route.get('/', 'WelcomeController@index')
-}
+    Route.get('/', 'WelcomeController@index')
+};
