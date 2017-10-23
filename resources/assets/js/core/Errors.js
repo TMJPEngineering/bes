@@ -1,35 +1,34 @@
 class Errors {
     constructor() {
-        this.errors = {}
+        this.errors = {};
     }
 
     any() {
-        return Object.keys(this.errors).length > 0
+        return Object.keys(this.errors).length > 0;
     }
 
     clear(field) {
         if (field) {
-            delete this.errors[field]
-
-            return
+            delete this.errors[field];
+            return;
         }
 
-        this.errors = {}
+        this.errors = {};
     }
 
     get(field) {
         if (this.errors[field]) {
-            return this.errors[field][0]
+            return this.errors[field][0];
         }
     }
 
     has(field) {
-        return this.errors.hasOwnProperty(field)
+        return this.errors.hasOwnProperty(field);
     }
 
     record(errors) {
-        this.errors = errors
+        this.errors = errors;
     }
 }
 
-export default Errors
+export default Errors;

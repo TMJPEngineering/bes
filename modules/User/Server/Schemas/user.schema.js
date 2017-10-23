@@ -18,7 +18,8 @@ let userSchema = new Mongoose.Schema({
     }
 })
 
-userSchema.methods.verifyPassword = password => this.password === crypto.createHash('sha1').update(password).digest('hex')
-userSchema.plugin(sharedPlugin)
+userSchema.methods.verifyPassword = function (password) {
+    return this.password === crypto.createHash('sha1').update(password).digest('hex');
+};
 
 export default Mongoose.model('User', userSchema)

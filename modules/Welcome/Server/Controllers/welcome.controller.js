@@ -1,15 +1,15 @@
-import view from '~/vendor/view'
+/* global view */
 
 module.exports = method => {
     let methods = {
         index
-    }
+    };
 
-    return methods[method]
+    return methods[method];
 }
 
 function index(req, res) {
     if (req.route.methods.get) {
-        view('welcome.index', res)
+        view('welcome.index', res);
     }
 }

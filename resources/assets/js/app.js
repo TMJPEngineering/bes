@@ -1,8 +1,11 @@
-import './bootstrap'
-import router from './routes'
+/* global Vue */
 
-const app = new Vue({
+import './bootstrap';
+import Routes from './routes';
+import App from './components/App';
+
+new Vue({
     el: '#app',
-
-    router
-})
+    render: h => h(App),
+    Routes
+});
