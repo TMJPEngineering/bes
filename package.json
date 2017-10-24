@@ -10,7 +10,8 @@
     "postinstall": "npm run setup",
     "dev": "./node_modules/.bin/cross-env NODE_ENV=development webpack",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production webpack -p",
-    "watch": "./node_modules/.bin/cross-env NODE_ENV=development webpack --watch"
+    "watch": "./node_modules/.bin/cross-env NODE_ENV=development webpack --watch",
+    "test": "karma start"
   },
   "keywords": [
     "mevn-stack-es6",
