@@ -23,7 +23,7 @@ module.exports = {
     },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions. extensions: ["*",".ts",".js", ".json",".vue"]
-        extensions: ["*",".ts",".js", ".json",".vue"]
+        extensions: ["*", ".ts", ".js", ".json", ".vue"]
     },
     devtool: isDevelopment ? 'inline-source-map' : false,
     module: {
