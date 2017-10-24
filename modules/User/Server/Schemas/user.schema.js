@@ -1,6 +1,5 @@
 import Mongoose from 'mongoose'
-import crypto from 'crypto'
-import sharedPlugin from '~/modules/Shared/Server/Schemas/shared.schema'
+import bcrypt from 'bcrypt'
 
 let userSchema = new Mongoose.Schema({
     name: {
@@ -14,12 +13,12 @@ let userSchema = new Mongoose.Schema({
     password: {
         type: String,
         require: true,
-        set: password => crypto.createHash('sha1').update(password).digest('hex')
+        set: password => bcrypt.hashSync(password, 10)
     }
 })
 
 userSchema.methods.verifyPassword = function (password) {
-    return this.password === crypto.createHash('sha1').update(password).digest('hex');
+    return bcrypt.compareSync(password, this.password);
 };
 
 export default Mongoose.model('User', userSchema)
