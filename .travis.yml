@@ -1,0 +1,8 @@
+sudo: required
+language: node_js
+node_js:
+  - 6.4.0
+before_script:
+  - npm install -g karma karma-jasmine karma-spec-reporter jasmine jasmine-core jasmine-spec-reporter phantomjs karma-phantomjs-launcher
+script:
+  - karma start --single-run --browsers PhantomJS_custom
