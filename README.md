@@ -12,9 +12,26 @@ To install the framework, run this command and you're good to go.
 npm run setup
 ```
 
-## To do
+## Features
 
-- Documentation
+- Modular Structure
+- Passport or TMJ Passport
+- ES6 (ECMAScript 6)
+- Ready-made commands
+  - **npm test** (For Testing)
+  - **npm start** (Run framework using Babel)
+  - **npm run setup** (Install framework)
+  - **npm install** (After npm install, it will automatically run the **posinstall** in package.json)
+  - **npm run dev** (Run webpack in development mode)
+  - **npm run prod** (Run webpack in production mode)
+  - **npm run watch** (Watch all files)
+- Bootstrap 4 (Beta)
+- MVC Architecture
+- TDD (Using **karma** and **jasmine**)
+- CI (Using **CircleCI** or **Travis**)
+- Helpers (e.g. env, logger, etc.)
+- Database Seeder
+- Socket.io
 
 ## Credits
 
