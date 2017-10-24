@@ -5,4 +5,4 @@ test:
   pre:
     - npm install -g karma karma-jasmine karma-spec-reporter jasmine jasmine-core jasmine-spec-reporter phantomjs karma-phantomjs-launcher
   override:
-    - karma start --single-run --browsers PhantomJS_custom
+    - karma start --single-run
