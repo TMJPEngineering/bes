@@ -15,8 +15,6 @@ let app = express();
 // Gzip Compress for compressing all accessed files
 compress(app);
 
-// Libraries for client-side
-app.use('/bower_components', express.static(`${__dirname}/bower_components`));
 // Build Assets: JS & CSS
 app.use('/build', express.static(`${__dirname}/public/build`));
 // HTML Files
