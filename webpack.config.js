@@ -30,7 +30,7 @@ module.exports = {
             //Create aliases to import or require certain modules more easily
             //for example in pageView import components may do like this import componentA from '../**/components/**/*.vue'
             //but use alias you can import like this import componentA  from 'components/**/*.vue'
-            // //watch more on https://webpack.js.org/configuration/resolve/
+            //watch more on https://webpack.js.org/configuration/resolve/
             "@components": path.resolve(__dirname, './resources/assets/js/components/'),
         }
     },
