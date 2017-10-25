@@ -18,11 +18,10 @@
     "vue"
   ],
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-sass": "^3.3.7",
-    "bulma": "^0.6.0",
     "chalk": "^2.1.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
