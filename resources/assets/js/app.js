@@ -1,11 +1,10 @@
 /* global Vue */
 
-import './bootstrap';
-import Routes from './routes';
-import App from './components/App';
+import Router from './router';
+import App from '@components';
 
 new Vue({
     el: '#app',
-    render: h => h(App),
-    Routes
+    render: createEl => createEl(App),
+    router: Router
 });

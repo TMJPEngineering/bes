@@ -8,22 +8,31 @@ const path = require('path');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ExtractSass = new ExtractTextPlugin({
-    filename: '[name]/[name].css',
+    filename: '[name].css',
     disable: (ENV === 'test'),
     allChunks: true
 });
 
 module.exports = {
     entry: {
-        vendor: ['./resources/assets/js/app.js', './resources/assets/sass/app.scss']
+        app: ['./resources/assets/js/app.js', './resources/assets/sass/app.scss'],
+        vendor: './resources/assets/js/vendor.js'
     },
     output: {
-        path: path.resolve(__dirname, 'public/build'),
-        filename: '[name]/[name].js'
+        path: path.resolve(__dirname, 'public/dist'),
+        filename: '[name].js'
     },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions. extensions: ["*",".ts",".js", ".json",".vue"]
-        extensions: ["*", ".ts", ".js", ".json", ".vue"]
+        extensions: ["*", ".ts", ".js", ".json", ".vue"],
+        modules: [path.join(__dirname, 'src'), 'node_modules'], // add a directory search src/* over node_modules/
+        alias: {
+            //Create aliases to import or require certain modules more easily
+            //for example in pageView import components may do like this import componentA from '../**/components/**/*.vue'
+            //but use alias you can import like this import componentA  from 'components/**/*.vue'
+            //watch more on https://webpack.js.org/configuration/resolve/
+            "@components": path.resolve(__dirname, './resources/assets/js/components/'),
+        }
     },
     devtool: isDevelopment ? 'inline-source-map' : false,
     module: {
@@ -45,7 +54,7 @@ module.exports = {
             // },
             {
                 test: /\.(woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=1024&publicPath=../&name=vendor/fonts/[name].[ext]'
+                loader: 'url-loader?limit=1024&publicPath=../&name=fonts/[name].[ext]'
             },
             {
                 test: /\.scss$/,

@@ -1,4 +1,4 @@
-/* global trimUri, toController */
+/* global trimUri, toController, tmj_view, BaseController, Middleware */
 
 // Router core object
 let core = {
@@ -25,14 +25,14 @@ let core = {
     },
     // Set app in config routes
     setApp: app => { core.config.app = app; },
-    // Set module in routes
-    setModule: module => { core.module = module; },
+    // Set namespace in routes
+    setNamespace: module => { core.module = module; },
     // Global function for route.
     route: (uri, controller, middlewares, method) => {
         core.config.set(controller, uri, core.module, middlewares);
-        const url = trimUri(core.router.uri);
-        const middleware = (core.router.middlewares) ? core.middleware(core.router.middlewares) : core.config.callback;
-        const func = require(`./../modules/${core.router.module}/Server/Controllers/${core.router.controller}`)(core.router.str.pop());
+        let url = trimUri(core.router.uri);
+        let middleware = (core.router.middlewares) ? core.middleware(core.router.middlewares) : core.config.callback;
+        let func = new BaseController(`./../modules/${core.router.module}/Controllers/${core.router.controller}`, core.router.str.pop());
         core.config.app[method](url, middleware, func);
     },
     // Route get for GET/HEAD Method
@@ -50,6 +50,12 @@ let core = {
     // Route delete for DELETE Method
     delete: (uri, controller, middlewares) => {
         core.route(uri, controller, middlewares, 'destroy');
+    },
+    // Route view for GET Method
+    view: (uri, filename) => {
+        core.config.app.get(uri, (req, res) => {
+            tmj_view(filename, res);
+        });
     },
     // Route resource is set of routes. It has `index`, `create`, `show`, `edit`, `store`, `update` and `destroy`.
     resource: (uri, controller, middlewares, options) => {
@@ -94,10 +100,7 @@ let core = {
     middleware: middlewares => {
         let groups = [];
         middlewares.forEach(middleware => {
-            let str = middleware.split('::'),
-                module = str.shift(),
-                method = str.shift();
-            groups.push(require(`./../modules/${module}/Server/Middlewares/${module.toLowerCase()}.middleware`)(method));
+            groups.push(new Middleware(middleware));
         });
         return groups;
     },
