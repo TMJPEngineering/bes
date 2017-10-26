@@ -3,7 +3,14 @@
 [![Build Status](https://travis-ci.org/jcmlumacad/mevn-stack-framework.svg?branch=master)](https://travis-ci.org/jcmlumacad/mevn-stack-framework)
 [![CircleCI](https://circleci.com/gh/jcmlumacad/mevn-stack-framework.svg?style=svg)](https://circleci.com/gh/jcmlumacad/mevn-stack-framework)
 
-MEVN Stack Framework featuring Bulma. `MEVN` means Mongo, Express, Vue, Node.
+MEVN Stack Framework.
+
+```
+M - Mongo
+E - Express
+V - Vue
+N - Node
+```
 
 This framework uses ECMAScript 6 (ES6). See the [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/) for full specification of the ECMAScript 6 language.
 
