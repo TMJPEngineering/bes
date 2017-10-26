@@ -21,10 +21,10 @@ npm run setup
 - Passport or TMJ Passport
 - ES6 (ECMAScript 6)
 - Ready-made commands
-  - **npm test** (For Testing)
-  - **npm start** (Run framework using Babel)
+  - **npm test or karma start** (For Testing)
+  - **npm start or babel-node server** (Run framework using Babel)
+  - **npm run nodemon** (Note: Please install nodemon "npm install -g nodemon" to watch all the files)
   - **npm run setup** (Install framework)
-  - **npm install** (After npm install, it will automatically run the **posinstall** in package.json)
   - **npm run dev** (Run webpack in development mode)
   - **npm run prod** (Run webpack in production mode)
   - **npm run watch** (Watch all files)
