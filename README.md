@@ -43,31 +43,31 @@ npm run setup
 **GET Method**
 
 ```js
-Route.get('<uri>', '<controller>@<method>', [<middlewares>])
+Route.get('<uri>', '<controller>@<method>', [<middlewares>]);
 ```
 
 **POST Method**
 
 ```js
-Route.post('<uri>', '<controller>@<method>', [<middlewares>])
+Route.post('<uri>', '<controller>@<method>', [<middlewares>]);
 ```
 
 **UPDATE Method**
 
 ```js
-Route.update('<uri>', '<controller>@<method>', [<middlewares>])
+Route.update('<uri>', '<controller>@<method>', [<middlewares>]);
 ```
 
 **DELETE Method**
 
 ```js
-Route.delete('<uri>', '<controller>@<method>', [<middlewares>])
+Route.delete('<uri>', '<controller>@<method>', [<middlewares>]);
 ```
 
 **RESOURCE Method**
 
 ```js
-Route.resource('<uri>', '<controller>@<method>', [<middlewares>], {only|except})
+Route.resource('<uri>', '<controller>@<method>', [<middlewares>], {only|except});
 ```
 
 **VIEW Method**
