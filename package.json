@@ -7,7 +7,6 @@
     "start": "babel-node server",
     "setup": "bash setup.sh",
     "nodemon": "nodemon server --exec babel-node",
-    "postinstall": "npm run setup",
     "dev": "./node_modules/.bin/cross-env NODE_ENV=development webpack",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production webpack -p",
     "watch": "./node_modules/.bin/cross-env NODE_ENV=development webpack --watch",
