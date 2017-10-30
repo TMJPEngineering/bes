@@ -1,9 +1,11 @@
-// import User from '~/modules/User/Entities/user.entity';
+// import Welcome from '~/modules/Welcome/Models';
 
 class WelcomeController {
     home(request, response) {
-        // User.test();
+       
+        Models('Welcome').index();
         response.send('I\'m home');
+       
     }
 }
 
