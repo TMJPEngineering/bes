@@ -1,7 +1,7 @@
 # MEVN Stack Framework
 
-[![Build Status](https://travis-ci.org/jcmlumacad/mevn-stack-framework.svg?branch=master)](https://travis-ci.org/jcmlumacad/mevn-stack-framework)
-[![CircleCI](https://circleci.com/gh/jcmlumacad/mevn-stack-framework.svg?style=svg)](https://circleci.com/gh/jcmlumacad/mevn-stack-framework)
+[![Build Status](https://travis-ci.org/TMJPEngineering/mevn-stack-framework.svg?branch=master)](https://travis-ci.org/TMJPEngineering/mevn-stack-framework)
+[![CircleCI](https://circleci.com/gh/TMJPEngineering/mevn-stack-framework/tree/master.svg?style=svg)](https://circleci.com/gh/TMJPEngineering/mevn-stack-framework/tree/master)
 
 MEVN Stack Framework.
 
