@@ -16,7 +16,7 @@ let app = express();
 compress(app);
 
 // Build Assets: JS & CSS
-app.use('/build', express.static(`${__dirname}/public/build`));
+app.use('/dist', express.static(`${__dirname}/public/dist`));
 // HTML Files
 app.use('/views', express.static(`${__dirname}/resources/views`));
 
