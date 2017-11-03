@@ -1,4 +1,4 @@
-nenvFile=".env"
+envFile=".env"
 nodeDir="node_modules"
 
 # If the value of nodeDir is not exist then run the command
