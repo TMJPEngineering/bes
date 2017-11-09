@@ -1,4 +1,3 @@
-import Welcome from './WelcomeModel';
-module.exports = Welcome;
+import WelcomeUser from './WelcomeUserModel';
 
-
+module.exports = WelcomeUser;

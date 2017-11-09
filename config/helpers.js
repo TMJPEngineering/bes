@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import nodeEnv from 'node-env-file';
 import path from 'path';
 import Router from '~/vendor/router';
-import Kernel from './kernel';
 
 let root = path.dirname(__dirname);
 
@@ -136,8 +135,8 @@ global.BaseController = (controllerPath, method) => {
 /**
  * Global middleware
  */
-global.Middleware = (method) => {
-    return Kernel[method];
+global.Middleware = () => {
+    return [];
 }
 
 /**

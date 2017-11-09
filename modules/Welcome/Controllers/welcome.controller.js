@@ -1,11 +1,9 @@
-// import Welcome from '~/modules/Welcome/Models';
+/* global Models */
 
 class WelcomeController {
     home(request, response) {
-       
         Models('Welcome').index();
         response.send('I\'m home');
-       
     }
 }
 
