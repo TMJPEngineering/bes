@@ -1,9 +1,9 @@
 /* global Models */
 
 class WelcomeController {
-    home(request, response) {
+    test(request, response) {
         Models('Welcome').index();
-        response.send('I\'m home');
+        response.send('Test');
     }
 }
 

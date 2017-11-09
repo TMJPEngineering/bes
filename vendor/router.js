@@ -100,7 +100,12 @@ let core = {
     middleware: middlewares => {
         let groups = [];
         middlewares.forEach(middleware => {
-            groups.push(new Middleware(middleware));
+            let _middleware = new Middleware(middleware);
+            if (typeof _middleware == 'object') {
+                _middleware.forEach(function (callback) {
+                    groups.push(callback);
+                });
+            }
         });
         return groups;
     },

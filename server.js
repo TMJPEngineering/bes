@@ -31,4 +31,4 @@ const app = new App;
 const _server = new Server;
 let server = _server.run(app.init());
 
-module.exports = server;
+export default server;

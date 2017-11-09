@@ -23,17 +23,7 @@ export default {
      */
     middlewareGroups: {
         web: [],
-        api: []
-    },
-
-    /**
-     * The application's route middleware.
-     *
-     * These middleware may be assigned to groups or used individually.
-     *
-     * @var array
-     */
-    routeMiddleware: {
-        auth: 'app/Http/Middleware/Authenticate'
+        api: [],
+        auth: ['app/Http/Middleware/Authenticate'],
     }
 }

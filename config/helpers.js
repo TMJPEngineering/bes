@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import nodeEnv from 'node-env-file';
 import path from 'path';
 import Router from '~/vendor/router';
+import Kernel from '~/app/Http/Kernel';
 
 let root = path.dirname(__dirname);
 
@@ -135,7 +136,17 @@ global.BaseController = (controllerPath, method) => {
 /**
  * Global middleware
  */
-global.Middleware = () => {
+global.Middleware = (value) => {
+    const rootPath = root + '/';
+
+    if (Kernel.middlewareGroups.hasOwnProperty(value)) {
+        let middlewareGroups = [];
+        Kernel.middlewareGroups[value].forEach((filepath) => {
+            middlewareGroups.push(require(rootPath + filepath));
+        });
+        return middlewareGroups;
+    }
+
     return [];
 }
 

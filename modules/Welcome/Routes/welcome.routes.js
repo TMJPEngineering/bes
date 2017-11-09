@@ -4,5 +4,7 @@ export default () => {
     namespace(tmj.config.namespace.welcome);
 
     Route.view('/', 'welcome.index');
-    Route.get('/home', 'WelcomeController@home');
+    Route.get('/test', 'WelcomeController@test', ['auth']);
+    Route.view('/home', 'welcome.index');
+    Route.view('/login', 'welcome.index');
 };
