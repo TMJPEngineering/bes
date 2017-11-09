@@ -1,6 +1,6 @@
 import WelcomeSchema from './WelcomeSchema';
 
-class Welcome {
+class WelcomeModel {
     constructor() {
 
     }
@@ -14,4 +14,4 @@ class Welcome {
     }
 }
 
-export default new Welcome();
+export default new WelcomeModel();

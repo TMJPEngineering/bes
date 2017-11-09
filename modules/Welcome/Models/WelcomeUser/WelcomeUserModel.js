@@ -1,13 +1,9 @@
 import WelcomeUserSchema from './WelcomeUserSchema';
 
-class WelcomeUser {
-    constructor() {
-
-    }
-
+class WelcomeUserModel {
     index() {
         console.log('index in welcome user');
     }
 }
 
-export default new WelcomeUser();
+export default new WelcomeUserModel();

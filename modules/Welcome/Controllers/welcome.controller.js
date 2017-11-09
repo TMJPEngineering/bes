@@ -2,7 +2,7 @@
 
 class WelcomeController {
     test(request, response) {
-        Models('Welcome').index();
+        Models('User').index();
         response.send('Test');
     }
 }

@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 import bluebird from 'bluebird';
-import sharedSchema from '~/modules/Shared/Schemas/shared.schema';
+import sharedSchema from '~/modules/Shared/Schemas/SharedSchema';
 
 export default () => {
     let uri = 'mongodb://localhost/' + env.MONGO_DATABASE;
