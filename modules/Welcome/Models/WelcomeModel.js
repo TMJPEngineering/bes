@@ -1,18 +1,17 @@
-import Welcome from './WelcomeSchema';
+import WelcomeSchema from './WelcomeSchema';
 
-class WelcomeModel {
+class Welcome {
+    constructor() {
 
-	constructor(){}
+    }
 
-	index(){
+    index() {
+        console.log('index');
+    }
 
-		console.log('index');
-	}
-
-	get(){
-		
-	}
-
+    get() {
+        console.log('get');
+    }
 }
 
-export default new WelcomeModel();
+export default new Welcome();

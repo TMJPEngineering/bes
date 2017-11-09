@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import nodeEnv from 'node-env-file';
 import path from 'path';
 import Router from '~/vendor/router';
-import Kernel from './kernel';
 
 let root = path.dirname(__dirname);
 
@@ -136,29 +135,29 @@ global.BaseController = (controllerPath, method) => {
 /**
  * Global middleware
  */
-global.Middleware = (method) => {
-    return Kernel[method];
+global.Middleware = () => {
+    return [];
 }
 
 /**
  * Global models
  */
-global.Models = (module)=>{
-    try{
+global.Models = (module) => {
+    try {
         var arry = module.split('/');
         var model;
-        
-        if(arry.length > 1 && arry.length <=2){
-             model = require('~/modules/'+arry[0]+'/Models/'+arry[1]);
-        }else if(arry.length == 1){
-             model = require('~/modules/'+arry[0]+'/Models/');
-        }else{
-           throw module + ' module not found!';
+
+        if (arry.length > 1 && arry.length <= 2) {
+            model = require('~/modules/' + arry[0] + '/Models/' + arry[1]);
+        } else if (arry.length == 1) {
+            model = require('~/modules/' + arry[0] + '/Models/');
+        } else {
+            throw module + ' module not found!';
         }
-       
+
         return model;
-    }catch(err){
+    } catch (err) {
         throw module + ' module not found!';
     }
-    
+
 };

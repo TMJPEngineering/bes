@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Thu Oct 19 2017 13:10:41 GMT+0800 (W. Australia Standard Time)
 
+// var webpackConfig = require('./webpack.config.js');
+
 module.exports = function(config) {
     config.set({
 
@@ -28,6 +30,37 @@ module.exports = function(config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
         },
+
+
+        // babelPreprocessor: {
+        //     options: {
+        //         "presets": ["es2015"],
+        //         "plugins": ["transform-es2015-modules-umd"]
+        //     }
+        // },
+
+
+        // webpack: {
+        //     // karma watches the test entry points
+        //     // (you don't need to specify the entry option)
+        //     // webpack watches dependencies
+        //
+        //     // webpack configuration
+        //     config: webpackConfig
+        // },
+        //
+        //
+        // webpackServer: {
+        //     noInfo: true
+        // },
+        //
+        //
+        // webpackMiddleware: {
+        //     // webpack-dev-middleware configuration
+        //     // i. e.
+        //     // stats: 'errors-only'
+        //     noInfo: true
+        // },
 
 
         // test results reporter to use
