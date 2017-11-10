@@ -1,21 +1,19 @@
-/* global env */
+/* global env, Models, logger */
 
 import passport from 'passport';
-import User from '~/modules/User/Schemas/user.schema';
 import TMJStrategy from 'tmj-passport';
 import LocalStrategy from 'passport-local';
 
 export default () => {
+    let User = new Models('User');
+
     // Local Passport
     passport.use(new LocalStrategy({
         'usernameField': 'email',
         'passwordField': 'password'
     }, (email, password, done) => {
-        User.findOne({ email }, (err, user) => {
-            if (err) return done(err);
-            if (!user) return done(null, false);
-            if (!user.verifyPassword(password)) return done(null, false);
-            return done(null, user);
+        User.findOneByEmail({ email, password, done }).then((result) => {
+            logger(result);
         });
     }));
 

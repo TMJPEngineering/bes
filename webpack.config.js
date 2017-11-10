@@ -1,5 +1,6 @@
 const ENV = process.env.NODE_ENV || 'development';
 const isDevelopment = (ENV === 'development');
+
 // Modules
 const webpack = require('webpack');
 const path = require('path');

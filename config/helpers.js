@@ -155,20 +155,20 @@ global.Middleware = (value) => {
  */
 global.Models = (module) => {
     try {
-        var arry = module.split('/');
-        var model;
+        let moduleSplit = module.split('/');
+        let model;
 
-        if (arry.length > 1 && arry.length <= 2) {
-            model = require('~/modules/' + arry[0] + '/Models/' + arry[1]);
-        } else if (arry.length == 1) {
-            model = require('~/modules/' + arry[0] + '/Models/');
+        if (moduleSplit.length > 1 && moduleSplit.length <= 2) {
+            model = require('~/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
+        } else if (moduleSplit.length == 1) {
+            model = require('~/modules/' + moduleSplit[0] + '/Models/');
         } else {
-            throw module + ' module not found!';
+            throw module + ' module not found.';
         }
 
         return model;
     } catch (err) {
-        throw module + ' module not found!';
+        throw module + ' module not found.';
     }
 
 };

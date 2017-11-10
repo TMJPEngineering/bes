@@ -1,4 +1,5 @@
 import express from 'express';
+import processHandler from './config/process-handler';
 import compress from './config/compress';
 import bodyParser from './config/body-parser';
 import coreMiddleware from './config/core-middleware';
@@ -11,8 +12,10 @@ import passport from './config/passport';
 import './config/helpers';
 
 class App {
-    init() {
+    initialize() {
         let app = express();
+
+        processHandler();
 
         // Gzip Compress for compressing all accessed files
         compress(app);

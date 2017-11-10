@@ -1,8 +1,9 @@
 /* global Models */
+let User = new Models('User');
 
 class WelcomeController {
     test(request, response) {
-        Models('User').index();
+        User.index();
         response.send('Test');
     }
 }

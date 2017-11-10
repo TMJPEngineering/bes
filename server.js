@@ -29,6 +29,6 @@ class Server {
 
 const app = new App;
 const _server = new Server;
-let server = _server.run(app.init());
+let server = _server.run(app.initialize());
 
 export default server;
