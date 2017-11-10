@@ -28,10 +28,14 @@ export default () => {
     }
 
     function runCallbacks(err) {
-        let collections = Kernel.messageBags;
+        let collections = Kernel.render;
         let root = path.dirname(require.main.filename) + '/';
-        for (let key in collections) {
-            require(root + collections[key])(err);
+        if (collections.length == 0) {
+            require(root + Kernel.fallback)(err);
+        } else {
+            for (let key in collections) {
+                require(root + collections[key])(err);
+            }
         }
     }
 };

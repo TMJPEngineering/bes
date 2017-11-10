@@ -1,5 +1,7 @@
 export default {
-    messageBags: [
-        'app/Exception/Messagebags/ErrorMessageBag'
-    ]
+    render: [
+        'app/Exception/ReferenceException',
+        'app/Exception/TypeException'
+    ],
+    fallback: 'app/Exception/FallbackException'
 };

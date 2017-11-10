@@ -33,7 +33,11 @@ let core = {
         let url = trimUri(core.router.uri);
         let middleware = (core.router.middlewares) ? core.middleware(core.router.middlewares) : core.config.callback;
         let func = new BaseController(`./../modules/${core.router.module}/Controllers/${core.router.controller}`, core.router.str.pop());
-        core.config.app[method](url, middleware, func);
+        try {
+            core.config.app[method](url, middleware, func);
+        } catch (e) {
+            console.log('Route Exception:', e);
+        }
     },
     // Route get for GET/HEAD Method
     get: (uri, controller, middlewares) => {

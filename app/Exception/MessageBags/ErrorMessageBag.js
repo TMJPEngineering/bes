@@ -1,33 +1,40 @@
-/* global logger */
+// Define a functional object to hold errors
+var error;
 
-import config from '~/config/error';
+var ErrorMessageBag = function (_error) {
+    error = _error;
+};
 
-function ErrorMessageBag(err) {
-    let defaultType = '';
-    let service = {
-        stacktrace,
-        message,
-        errorlog
-    };
+ErrorMessageBag.prototype.setError = function (_error) {
+    error = _error
+};
 
-    onInit();
+ErrorMessageBag.prototype.getMessage = function() {
+    return error.message;
+};
 
-    function onInit() {
-        defaultType = config.errorMessageBag.default || 'stacktrace';
-        service[defaultType](err);
-    }
+ErrorMessageBag.prototype.getName = function() {
+    return error.name;
+};
 
-    function stacktrace(error) {
-        logger(error.stack);
-    }
+ErrorMessageBag.prototype.getFileName = function() {
+    return error.fileName;
+};
 
-    function message(error) {
-        logger(`${error.toString()}`);
-    }
+ErrorMessageBag.prototype.getLineNumber = function() {
+    return error.lineNumber;
+};
 
-    function errorlog(error) {
-        logger(`${error.name}: ${error.message} in ${error.fileName} at line #${error.lineNumber} and column #${error.columnNumber}`);
-    }
-}
+ErrorMessageBag.prototype.getColumnNumber = function() {
+    return error.columnNumber;
+};
+
+ErrorMessageBag.prototype.getStackTrace = function() {
+    return error.stack;
+};
+
+ErrorMessageBag.prototype.toString = function() {
+    return error.toString();
+};
 
 module.exports = ErrorMessageBag;
