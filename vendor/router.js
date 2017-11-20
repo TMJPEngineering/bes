@@ -56,8 +56,9 @@ let core = {
         core.route(uri, controller, middlewares, 'destroy');
     },
     // Route view for GET Method
-    view: (uri, filename) => {
-        core.config.app.get(uri, (req, res) => {
+    view: (uri, filename, middlewares) => {
+        let middleware = (middlewares) ? core.middleware(middlewares) : core.config.callback;
+        core.config.app.get(uri, middleware, (req, res) => {
             tmj_view(filename, res);
         });
     },
