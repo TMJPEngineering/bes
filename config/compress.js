@@ -5,8 +5,8 @@ export default app => {
     app.use(compression({ filter: shouldCompress }));
 };
 
-function shouldCompress(req, res) {
-    if (req.headers['x-no-compression']) return false;
+function shouldCompress(request, response) {
+    if (request.headers['x-no-compression']) return false;
 
-    return compression.filter(req, res);
+    return compression.filter(request, response);
 }

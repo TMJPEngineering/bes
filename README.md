@@ -1,16 +1,9 @@
-# MEVN Stack Framework
+# bes.js
 
-[![Build Status](https://travis-ci.org/TMJPEngineering/mevn-stack-framework.svg?branch=master)](https://travis-ci.org/TMJPEngineering/mevn-stack-framework)
-[![CircleCI](https://circleci.com/gh/TMJPEngineering/mevn-stack-framework/tree/master.svg?style=svg)](https://circleci.com/gh/TMJPEngineering/mevn-stack-framework/tree/master)
+*A MVC Framework for Node.js*
 
-MEVN Stack Framework.
-
-```
-M - Mongo
-E - Express
-V - Vue
-N - Node
-```
+[![Build Status](https://travis-ci.org/TMJPEngineering/bes.svg?branch=master)](https://travis-ci.org/TMJPEngineering/bes)
+[![CircleCI](https://circleci.com/gh/TMJPEngineering/bes/tree/master.svg?style=svg)](https://circleci.com/gh/TMJPEngineering/bes/tree/master)
 
 This framework uses ECMAScript 6 (ES6). See the [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/) for full specification of the ECMAScript 6 language.
 
@@ -25,7 +18,7 @@ npm run setup
 ## Features
 
 - Modular Structure
-- Passport or TMJ Passport
+- Passport
 - ES6 (ECMAScript 6)
 - Ready-made commands
   - **npm test or karma start** (For Testing)
@@ -50,31 +43,31 @@ npm run setup
 **GET Method**
 
 ```js
-Route.get('<uri>', '<controller>@<method>', [<middlewares>]);
+Route.get('<uri>', '<controller>@<method>|<closure>', [<middlewares>]);
 ```
 
 **POST Method**
 
 ```js
-Route.post('<uri>', '<controller>@<method>', [<middlewares>]);
+Route.post('<uri>', '<controller>@<method>|<closure>', [<middlewares>]);
 ```
 
 **UPDATE Method**
 
 ```js
-Route.update('<uri>', '<controller>@<method>', [<middlewares>]);
+Route.update('<uri>', '<controller>@<method>|<closure>', [<middlewares>]);
 ```
 
 **DELETE Method**
 
 ```js
-Route.delete('<uri>', '<controller>@<method>', [<middlewares>]);
+Route.delete('<uri>', '<controller>@<method>|<closure>', [<middlewares>]);
 ```
 
 **RESOURCE Method**
 
 ```js
-Route.resource('<uri>', '<controller>@<method>', [<middlewares>], {only|except});
+Route.resource('<uri>', '<controller>', [<middlewares>], {only|except});
 ```
 
 **VIEW Method**
@@ -82,7 +75,15 @@ Route.resource('<uri>', '<controller>@<method>', [<middlewares>], {only|except})
 It loads a html file.
 
 ```js
-Route.view('<uri>', 'file');
+Route.view('<uri>', '<file>');
+```
+
+**ALL Method**
+
+This method is used for loading middleware functions at a path for all request methods.
+
+```js
+Route.all('<uri>', '<closure>');
 ```
 
 In `resource` method, it provides `get`, `post`, `update`, and `delete` method. These are the following methods in controller that uses `resource` method:
@@ -158,4 +159,4 @@ Route.group({ prefix: 'lorem', middleware: ['foo', 'bar'] }, () => {
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/TMJPEngineering/mevn-stack-framework/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/TMJPEngineering/bes/blob/master/LICENSE) file for details

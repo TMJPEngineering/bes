@@ -1,6 +1,6 @@
-import ErrorHandler from './ErrorHandler';
+import ErrorHandler from '~/app/Handler/ErrorHandler';
 
-function ReferenceException(error) {
+let ReferenceException = function (error) {
     let errorHandler = new ErrorHandler;
     errorHandler.showErrorToString(error, new ReferenceError);
 };

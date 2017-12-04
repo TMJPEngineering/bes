@@ -1,6 +1,6 @@
-import ErrorHandler from './ErrorHandler';
+import ErrorHandler from '~/app/Handler/ErrorHandler';
 
-function TypeException(error) {
+let TypeException = function (error) {
     let errorHandler = new ErrorHandler;
     errorHandler.showErrorToString(error, new TypeError);
 };

@@ -1,12 +1,9 @@
 import UserSchema from './UserSchema';
 
-class UserModel {
-    index() {
-        console.log('index');
-    }
-
-    findOneByEmail(payload) {
-        return UserSchema.findOne({ email: payload.email }, (err, user) => {
+class UserModel
+{
+    findOneByUsername(payload) {
+        return UserSchema.findOne({ username: payload.username }, (err, user) => {
             if (err) return payload.done(err);
             if (!user) return payload.done(null, false);
             if (!user.verifyPassword(payload.password)) return payload.done(null, false);

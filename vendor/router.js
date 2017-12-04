@@ -1,4 +1,6 @@
-/* global trimUri, toController, tmj_view, BaseController, Middleware */
+/* global trimUri, toController, tmj_view, BaseController, Middleware, logger */
+
+import _ from 'lodash';
 
 // Router core object
 let core = {
@@ -10,13 +12,21 @@ let core = {
     config: {
         app: null,
         set: (controller, uri, module, middlewares) => {
-            let str = controller.split('@');
+            let str = false;
+            if (typeof controller == 'string') {
+                str = controller.split('@');
+            }
+            if (middlewares == undefined) middlewares = [];
+            if (core.allOptions != undefined && core.allOptions.middleware != undefined) {
+                middlewares = _.union(middlewares, core.allOptions.middleware);
+            }
+
             core.router = {
                 str,
                 module,
                 middlewares: (core.allOptions !== undefined && core.allOptions.middleware !== undefined) ? core.allOptions.middleware : middlewares,
                 uri: (core.allOptions !== undefined && core.allOptions.prefix !== undefined) ? `/${core.allOptions.prefix}${uri}` : uri,
-                controller: toController(str.shift())
+                controller: str ? toController(str.shift()) : str
             };
         },
         callback: (res, req, next) => {
@@ -30,14 +40,21 @@ let core = {
     // Global function for route.
     route: (uri, controller, middlewares, method) => {
         core.config.set(controller, uri, core.module, middlewares);
+        let func = controller;
+        if (typeof controller == 'string') {
+            func = new BaseController(`./../modules/${core.router.module}/Controllers/${core.router.controller}`, core.router.str.pop());
+        }
         let url = trimUri(core.router.uri);
         let middleware = (core.router.middlewares) ? core.middleware(core.router.middlewares) : core.config.callback;
-        let func = new BaseController(`./../modules/${core.router.module}/Controllers/${core.router.controller}`, core.router.str.pop());
         try {
             core.config.app[method](url, middleware, func);
         } catch (e) {
-            console.log('Route Exception:', e);
+            logger(`Route Exception: ${e}`);
         }
+    },
+    // Route all - wrapper for app.all
+    all: (uri, controller, middlewares) => {
+        core.route(uri, controller, middlewares, 'all');
     },
     // Route get for GET/HEAD Method
     get: (uri, controller, middlewares) => {
@@ -57,6 +74,9 @@ let core = {
     },
     // Route view for GET Method
     view: (uri, filename, middlewares) => {
+        if (core.allOptions != undefined && core.allOptions.middleware != undefined) {
+            middlewares = _.union(middlewares, core.allOptions.middleware);
+        }
         let middleware = (middlewares) ? core.middleware(middlewares) : core.config.callback;
         core.config.app.get(uri, middleware, (req, res) => {
             tmj_view(filename, res);

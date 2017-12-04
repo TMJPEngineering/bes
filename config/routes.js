@@ -8,16 +8,19 @@ export default app => {
 
     // Call your module routes here
     // e.g. UserRoutes(), AuthRoutes()
-    WelcomeRoutes();
+    Route.group({ middleware: ['web']}, () => {
+        WelcomeRoutes();
 
-    // Logout function
-    app.get('/logout', (req, res) => {
-        req.logout();
-        res.redirect('/login');
-    });
+        // Logout function
+        Route.get('/logout', (request, response) => {
+            request.logout();
+            response.redirect('/login');
+        });
 
-    // If the url doesn't exist, redirect to /
-    app.all('/*', (req, res) => {
-        res.redirect('/');
+        // If the url doesn't exist, redirect to /
+        Route.all('/*', (request, response) => {
+            response.redirect('/');
+        });
     });
+    Route.endGroup();
 };

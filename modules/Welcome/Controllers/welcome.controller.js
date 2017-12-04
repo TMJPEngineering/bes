@@ -1,9 +1,6 @@
-/* global Models */
-let User = new Models('User');
-
-class WelcomeController {
+class WelcomeController
+{
     test(request, response) {
-        User.index();
         response.send('Test');
     }
 }

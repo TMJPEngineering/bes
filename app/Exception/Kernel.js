@@ -1,7 +1,8 @@
 export default {
     render: [
-        'app/Exception/ReferenceException',
-        'app/Exception/TypeException'
+        'app/Exception/Exceptions/ReferenceException',
+        'app/Exception/Exceptions/TypeException',
+        'app/Exception/Exceptions/ErrorException'
     ],
-    fallback: 'app/Exception/FallbackException'
+    fallback: 'app/Exception/Exceptions/ErrorException'
 };

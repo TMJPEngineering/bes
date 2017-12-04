@@ -11,7 +11,8 @@ import routes from './config/routes';
 import passport from './config/passport';
 import './config/helpers';
 
-class App {
+class App
+{
     initialize() {
         let app = express();
 
@@ -20,12 +21,14 @@ class App {
         // Gzip Compress for compressing all accessed files
         compress(app);
 
-        // Build Assets: JS & CSS
+        // Build JS & CSS
         app.use('/dist', express.static(`${__dirname}/public/dist`));
+        // Build Fonts
+        app.use('/fonts', express.static(`${__dirname}/public/fonts`));
         // HTML Files
         app.use('/views', express.static(`${__dirname}/resources/views`));
 
-        // This library uses req.body for requests like POST method, etc.
+        // This library uses request.body for requests like POST method, etc.
         bodyParser(app);
         // This library uses for security purposes like session, crsf, passport, and helmet.
         coreMiddleware(app);

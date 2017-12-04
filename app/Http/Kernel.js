@@ -8,7 +8,7 @@ export default {
      */
     middleware: [
         'app/Http/Middleware/CookieParser',
-        'app/Http/Middleware/VerifyCsrfToken',
+        'app/Http/Middleware/GenerateCsrfToken',
         'app/Http/Middleware/Helmet',
         'app/Http/Middleware/MethodOverride',
         'app/Http/Middleware/CookieSession',
@@ -22,7 +22,7 @@ export default {
      * @var array
      */
     middlewareGroups: {
-        web: [],
+        web: ['app/Http/Middleware/VerifyCsrfToken'],
         api: [],
         auth: ['app/Http/Middleware/Authenticate'],
     }
