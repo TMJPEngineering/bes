@@ -25,5 +25,6 @@ export default {
         web: ['app/Http/Middleware/VerifyCsrfToken'],
         api: [],
         auth: ['app/Http/Middleware/Authenticate'],
+        guest: ['app/Http/Middleware/RedirectIfAuthenticated']
     }
 }
