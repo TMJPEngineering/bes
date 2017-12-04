@@ -3,6 +3,7 @@ import nodeEnv from 'node-env-file';
 import path from 'path';
 import Router from '~/vendor/router';
 import Kernel from '~/app/Http/Kernel';
+import Mongoose from 'mongoose';
 
 let root = path.dirname(__dirname);
 
@@ -111,9 +112,10 @@ global.Route = Router;
 global.tmj = {
     config: {
         namespace: {
-            welcome: 'Welcome',
-            user: 'User',
-            shared: 'Shared'
+            auth: 'Auth',
+            home: 'Home',
+            shared: 'Shared',
+            user: 'User'
         }
     }
 };
@@ -172,3 +174,13 @@ global.Models = (module) => {
     }
 
 };
+
+/**
+ * Global Schema
+ */
+global.Schema = Mongoose.Schema;
+
+/**
+ * Global Mongoose
+ */
+global.Mongoose = Mongoose;

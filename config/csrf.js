@@ -1,6 +1,6 @@
 export default app => {
-    app.use((req, res, next) => {
-        res.cookie('XSRF-TOKEN', req.csrfToken());
+    app.use((request, response, next) => {
+        response.cookie('XSRF-TOKEN', request.csrfToken());
         next();
     });
 };

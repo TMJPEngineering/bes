@@ -16,8 +16,7 @@ const ExtractSass = new ExtractTextPlugin({
 
 module.exports = {
     entry: {
-        app: ['./resources/assets/js/app.js', './resources/assets/sass/app.scss'],
-        vendor: './resources/assets/js/vendor.js'
+        app: ['./resources/assets/js/app.js', './resources/assets/sass/app.scss']
     },
     output: {
         path: path.resolve(__dirname, 'public/dist'),
@@ -55,7 +54,7 @@ module.exports = {
             // },
             {
                 test: /\.(woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=1024&publicPath=../&name=fonts/[name].[ext]'
+                loader: 'url-loader?limit=1024&publicPath=../&name=../fonts/[name].[ext]'
             },
             {
                 test: /\.scss$/,

@@ -1,12 +1,13 @@
-import Mongoose from 'mongoose';
-import bcrypt from 'bcrypt'
+/* global Schema, Mongoose */
 
-let userSchema = new Mongoose.Schema({
+import bcrypt from 'bcrypt';
+
+let userSchema = new Schema({
     name: {
         type: String,
         require: true
     },
-    email: {
+    username: {
         type: String,
         require: true
     },

@@ -19,22 +19,22 @@ export default () => {
     // catch uncaught exceptions, trace, then exit normally
     process.on('uncaughtException', onEnd);
 
-    function onEnd(err) {
+    function onEnd(error) {
         // run process before closing
         logger('Before process end, running all registered callbacks.');
-        runCallbacks(err);
+        runCallbacks(error);
         logger('All registered callbacks have been run, process will now end.');
         // process.exit(0);
     }
 
-    function runCallbacks(err) {
+    function runCallbacks(error) {
         let collections = Kernel.render;
         let root = path.dirname(require.main.filename) + '/';
         if (collections.length == 0) {
-            require(root + Kernel.fallback)(err);
+            require(root + Kernel.fallback)(error);
         } else {
             for (let key in collections) {
-                require(root + collections[key])(err);
+                require(root + collections[key])(error);
             }
         }
     }

@@ -1,6 +1,6 @@
 /* global logger, LOGGER_TYPE */
 
-import ErrorMessageBag from './MessageBags/ErrorMessageBag';
+import ErrorMessageBag from '~/app/Exception/MessageBags/ErrorMessageBag';
 
 class ErrorHandler {
     showErrorMessage(error, errorInstance) {

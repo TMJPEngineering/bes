@@ -5,7 +5,8 @@ import http from 'http';
 import socketIo from 'socket.io';
 import sockets from './config/sockets';
 
-class Server {
+class Server
+{
     run(app) {
         const server = http.createServer(app);
         const port = env.NODE_PORT || 3000;
