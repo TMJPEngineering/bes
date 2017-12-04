@@ -1,4 +1,4 @@
-# Bes.js
+# bes.js
 
 *A MVC Framework for Node.js*
 
