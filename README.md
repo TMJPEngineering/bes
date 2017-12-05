@@ -1,6 +1,6 @@
 # bes.js
 
-*A MVC Framework for Node.js*
+*A friendly MVC Framework for Node.js*
 
 [![Build Status](https://travis-ci.org/TMJPEngineering/bes.svg?branch=master)](https://travis-ci.org/TMJPEngineering/bes)
 [![CircleCI](https://circleci.com/gh/TMJPEngineering/bes/tree/master.svg?style=svg)](https://circleci.com/gh/TMJPEngineering/bes/tree/master)
@@ -151,7 +151,10 @@ Route.group({ prefix: 'lorem', middleware: ['foo', 'bar'] }, () => {
 });
 ```
 
-**Note: Not yet implemented -- Nested Route Groups**
+## TODO
+
+- Nested Route Groups
+- `bes` command line interface (cli)
 
 ## Credits
 
