@@ -1,8 +1,6 @@
 // Karma configuration
 // Generated on Thu Oct 19 2017 13:10:41 GMT+0800 (W. Australia Standard Time)
 
-// var webpackConfig = require('./webpack.config.js');
-
 module.exports = function(config) {
     config.set({
 
@@ -12,7 +10,7 @@ module.exports = function(config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine', 'browserify'],
 
 
         // list of files / patterns to load in the browser
@@ -29,38 +27,18 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
+            'tests/**/*.spec.js': ['browserify']
         },
 
 
-        // babelPreprocessor: {
-        //     options: {
-        //         "presets": ["es2015"],
-        //         "plugins": ["transform-es2015-modules-umd"]
-        //     }
-        // },
-
-
-        // webpack: {
-        //     // karma watches the test entry points
-        //     // (you don't need to specify the entry option)
-        //     // webpack watches dependencies
-        //
-        //     // webpack configuration
-        //     config: webpackConfig
-        // },
-        //
-        //
-        // webpackServer: {
-        //     noInfo: true
-        // },
-        //
-        //
-        // webpackMiddleware: {
-        //     // webpack-dev-middleware configuration
-        //     // i. e.
-        //     // stats: 'errors-only'
-        //     noInfo: true
-        // },
+        browserify: {
+            debug: true,
+            transform: [["babelify", {
+                extensions: [".js"],
+                global: true,
+                presets: ["es2015", "stage-2"]
+            }]],
+        },
 
 
         // test results reporter to use

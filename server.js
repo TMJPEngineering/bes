@@ -1,14 +1,14 @@
 /* global env, logger, LOGGER_TYPE */
 
-import App from './app';
-import http from 'http';
+import { createServer } from 'http';
 import socketIo from 'socket.io';
-import sockets from './config/sockets';
 
-class Server
-{
-    run(app) {
-        const server = http.createServer(app);
+import App from './app';
+import sockets from './bootstrap/sockets';
+
+class Server {
+    constructor(app) {
+        const server = createServer(app);
         const port = env.NODE_PORT || 3000;
 
         // If the development is for testing purpose or development. Use 'development'
@@ -17,7 +17,7 @@ class Server
         }
 
         // Socket configuration
-        const io = socketIo(server);
+        const io = socketIo(server, { serveClient: false });
         sockets(io);
 
         server.listen(port, env.HOSTNAME, () => {
@@ -28,8 +28,4 @@ class Server
     }
 }
 
-const app = new App;
-const _server = new Server;
-let server = _server.run(app.initialize());
-
-export default server;
+export const server = new Server(App());
