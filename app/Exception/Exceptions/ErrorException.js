@@ -1,8 +1,8 @@
-import ErrorHandler from '~/app/Handler/ErrorHandler';
+import LogErrorHandler from '~/app/Handler/LogErrorHandler';
 
 let ErrorException = function (error) {
-    let errorHandler = new ErrorHandler;
-    errorHandler.showErrorToString(error, new Error);
+    let logErrorHandler = new LogErrorHandler();
+    logErrorHandler.show(error, new Error());
 };
 
 module.exports = ErrorException;

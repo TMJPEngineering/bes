@@ -1,17 +1,26 @@
 import chalk from 'chalk';
-import nodeEnv from 'node-env-file';
 import path from 'path';
+
+import app from '~/config/app';
+import database from '~/config/database';
+import logger from '~/config/logger';
+import modules from '~/config/modules';
 import Router from '~/vendor/router';
 import Kernel from '~/app/Http/Kernel';
-import Mongoose from 'mongoose';
 
 let root = path.dirname(__dirname);
+let connection = database.connections[database.default];
 
 /**
- * Load .env in the root directory of the this project
+ * TMJ config variables
  * @return {Object}
  */
-global.env = nodeEnv(`${__dirname}/../.env`);
+global.config = {
+    app,
+    database,
+    logger,
+    modules
+};
 
 /**
  * Get cookie from cookie by name
@@ -22,7 +31,7 @@ global.env = nodeEnv(`${__dirname}/../.env`);
 global.getCookie = (cookie, name) => {
     let value = "; " + cookie;
     let parts = value.split("; " + name + "=");
-    if (parts.length == 2) return unescape(parts.pop().split(";").shift());
+    if (parts.length === 2) return unescape(parts.pop().split(";").shift());
 };
 
 /**
@@ -39,44 +48,26 @@ global.paint = (message, color) => {
  * Chalk colors
  * @return {Object}
  */
-global.CHALK_COLOR = {
-    log: 'white',
-    info: 'blue',
-    warn: 'yellow',
-    error: 'red',
-    dir: 'gray',
-    time: 'white',
-    timeEnd: 'white',
-    assert: 'cyan'
-};
+global.LOGGER_COLOR = logger.color;
 
 /**
  * Helper for console
  */
 global.logger = (message, type) => {
-    if (type == undefined || type == 'log') {
-        console.log(message);
-        return;
+    if (type === undefined) {
+        type = 'log';
     }
-
-    console[type](global.paint(message, global.CHALK_COLOR[type]));
+    message = new Date().toLocaleString() + ' [' + type.toUpperCase() + ']: ' + message;
+    if (app.debug === 'true') {
+        console[type](global.paint(message, global.LOGGER_COLOR[type]));
+    }
 };
 
 /**
  * Logger type for console
  * @return {Object}
  */
-global.LOGGER_TYPE = {
-    DEFAULT: 'log',
-    INFO: 'info',
-    WARNING: 'warn',
-    DANGER: 'error',
-    DIRECTORY: 'dir',
-    TIME: 'time',
-    TIME_END: 'timeEnd',
-    TRACE: 'trace',
-    ASSERT: 'assert'
-};
+global.LOGGER_TYPE = logger.type;
 
 /**
  * Add suffix `controller` per file. e.g. `welcome.controller`
@@ -106,21 +97,6 @@ global.tmj_view = (file, res) => {
 global.Route = Router;
 
 /**
- * TMJ config variables
- * @return {Object}
- */
-global.tmj = {
-    config: {
-        namespace: {
-            auth: 'Auth',
-            home: 'Home',
-            shared: 'Shared',
-            user: 'User'
-        }
-    }
-};
-
-/**
  * Set namespace in every module
  */
 global.namespace = (moduleName) => {
@@ -133,7 +109,7 @@ global.namespace = (moduleName) => {
 global.BaseController = (controllerPath, method) => {
     const controller = require(controllerPath);
     return controller[method];
-}
+};
 
 /**
  * Global middleware
@@ -150,7 +126,7 @@ global.Middleware = (value) => {
     }
 
     return [];
-}
+};
 
 /**
  * Global models
@@ -161,9 +137,9 @@ global.Models = (module) => {
         let model;
 
         if (moduleSplit.length > 1 && moduleSplit.length <= 2) {
-            model = require('~/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
+            model = require(root + '/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
         } else if (moduleSplit.length == 1) {
-            model = require('~/modules/' + moduleSplit[0] + '/Models/');
+            model = require(root + '/modules/' + moduleSplit[0] + '/Models/');
         } else {
             throw module + ' module not found.';
         }
@@ -172,15 +148,15 @@ global.Models = (module) => {
     } catch (err) {
         throw module + ' module not found.';
     }
-
 };
 
 /**
  * Global Schema
  */
-global.Schema = Mongoose.Schema;
+global.Schema = connection.schema
 
 /**
- * Global Mongoose
+ * Global DB
  */
-global.Mongoose = Mongoose;
+global.DB = connection.driver
+

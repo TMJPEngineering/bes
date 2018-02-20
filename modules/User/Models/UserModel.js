@@ -1,7 +1,6 @@
 import UserSchema from './UserSchema';
 
-class UserModel
-{
+class UserModel {
     findOneByUsername(payload) {
         return UserSchema.findOne({ username: payload.username }, (err, user) => {
             if (err) return payload.done(err);
