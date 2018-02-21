@@ -21,9 +21,9 @@ npm run setup
 - Passport
 - ES6 (ECMAScript 6)
 - Ready-made commands
-  - **npm test or karma start** (For Testing)
-  - **npm start or babel-node server** (Run framework using Babel)
-  - **npm run nodemon** (Note: Please install nodemon "npm install -g nodemon" to watch all the files)
+  - **npm test** (For Testing)
+  - **npm start** (Run framework using Babel)
+  - **npm run reload** (Watch all the files)
   - **npm run setup** (Install framework)
   - **npm run dev** (Run webpack in development mode)
   - **npm run prod** (Run webpack in production mode)
@@ -75,7 +75,7 @@ Route.resource('<uri>', '<controller>', [<middlewares>], {only|except});
 It loads a html file.
 
 ```js
-Route.view('<uri>', '<file>');
+Route.view('<uri>', '<file>', [<middlewares>]);
 ```
 
 **ALL Method**
@@ -103,7 +103,7 @@ You can also limit by using `only` or `except`. See example below:
 ```js
 export default () => {
     namespace('Blog'); // or
-    namespace(tmj.config.namespace.blog); // It must have a value inside helper (located in /lib/helpers.js)
+    namespace(config.modules.blog); // It must have a value inside modules (located in /config/modules.js)
     ...
     Route.resource('/user', 'UserController', ['client'], {
         only: ['index', 'show']
@@ -117,7 +117,7 @@ export default () => {
 ```js
 export default () => {
     namespace('Blog'); // or
-    namespace(tmj.config.namespace.blog); // It must have a value inside helper (located in /lib/helpers.js)
+    namespace(config.modules.blog); // It must have a value inside modules (located in /config/modules.js)
     ...
     Route.resource('/api/blog', 'UserController', ['oauth'], {
         except: ['create', 'edit']
@@ -131,7 +131,7 @@ export default () => {
 ```js
 export default () => {
     namespace('Home'); // or
-    namespace(tmj.config.namespace.home); // It must have a value inside helper (located in /lib/helpers.js)
+    namespace(config.modules.home); // It must have a value inside modules (located in /config/modules.js)
     ...
     Route.view('/home', 'pages.home');
     // It says that route will load the html file in /resources/views/pages/home.html
