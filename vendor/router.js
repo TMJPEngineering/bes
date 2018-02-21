@@ -24,7 +24,7 @@ let core = {
             core.router = {
                 str,
                 module,
-                middlewares: (core.allOptions !== undefined && core.allOptions.middleware !== undefined) ? core.allOptions.middleware : middlewares,
+                middlewares,
                 uri: (core.allOptions !== undefined && core.allOptions.prefix !== undefined) ? `/${core.allOptions.prefix}${uri}` : uri,
                 controller: str ? toController(str.shift()) : str
             };

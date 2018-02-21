@@ -1,7 +1,7 @@
-/* global Route, tmj, namespace */
+/* global Route, config, namespace */
 
 export default () => {
-    namespace(tmj.config.namespace.welcome);
+    namespace(config.modules.welcome);
 
     Route.view('/', 'welcome.index', ['guest']);
 };

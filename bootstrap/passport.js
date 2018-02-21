@@ -5,7 +5,7 @@ import LocalStrategy from 'passport-local';
 
 export default () => {
     let User = new Models('User');
-
+    
     // Local Passport
     passport.use(new LocalStrategy({
         'usernameField': 'username',

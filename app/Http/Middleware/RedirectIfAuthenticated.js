@@ -1,4 +1,4 @@
-function RedirectIfAuthenticated(request, response, next) {
+function RedirectIfAuthenticated (request, response, next) {
     if (request.user != undefined) {
         response.redirect('/');
     }

@@ -6,6 +6,6 @@ export default app => {
     let root = path.dirname(require.main.filename) + '/';
 
     globalMiddlewares.forEach(_path => {
-        app.use(require(root + _path));
+        require(root + _path)(app);
     });
-}
+};

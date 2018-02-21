@@ -1,4 +1,4 @@
-/* global Schema, Mongoose */
+/* global Schema, DB */
 
 import bcrypt from 'bcrypt';
 
@@ -22,4 +22,4 @@ userSchema.methods.verifyPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-export default Mongoose.model('User', userSchema)
+export default DB.model('User', userSchema);

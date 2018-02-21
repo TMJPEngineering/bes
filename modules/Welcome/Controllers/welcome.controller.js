@@ -1,5 +1,4 @@
-class WelcomeController
-{
+class WelcomeController {
     test(request, response) {
         response.send('Test');
     }

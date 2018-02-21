@@ -1,35 +1,30 @@
-/* global env, logger, LOGGER_TYPE */
+/* global config, logger, LOGGER_TYPE */
+
+import { createServer } from 'http';
+import socketIo from 'socket.io';
 
 import App from './app';
-import http from 'http';
-import socketIo from 'socket.io';
-import sockets from './config/sockets';
+import sockets from './bootstrap/sockets';
 
-class Server
-{
-    run(app) {
-        const server = http.createServer(app);
-        const port = env.NODE_PORT || 3000;
-
-        // If the development is for testing purpose or development. Use 'development'
-        if (env.NODE_ENV === 'development') {
-            env.APP_URL = `${env.APP_URL}:${port}`;
-        }
-
+class Server {
+    constructor(app) {
+        const server = createServer(app);
+        const port = config.app.port;
+        const host = config.app.host;
+        const url = (config.app.env === 'production')
+            ? config.app.url
+            : `${config.app.url}:${port}`;
+        
         // Socket configuration
         const io = socketIo(server);
         sockets(io);
 
-        server.listen(port, env.HOSTNAME, () => {
-            logger(`Server listening on ${env.APP_URL}, Ctrl+C to stop`, LOGGER_TYPE.INFO);
+        server.listen(port, host, () => {
+            logger(`Server listening on ${url}, Ctrl+C to stop`, LOGGER_TYPE.INFO);
         });
 
         return server;
     }
 }
 
-const app = new App;
-const _server = new Server;
-let server = _server.run(app.initialize());
-
-export default server;
+export const server = new Server(App());
