@@ -18,5 +18,5 @@ printf "\e[32m ✔ npm libraries \n" # Print in green color
 printf "\e[32m ✔ env variables \n" # Print in green color
 printf "\033[0m" # Reset colors back to normal
 
-npm run prod # Run production mode for webpack
+npm run dev # Run production mode for webpack
 npm start # Starting server
