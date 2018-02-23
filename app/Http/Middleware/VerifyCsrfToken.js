@@ -1,14 +1,16 @@
-function VerifyCsrfToken (request, response, next) {
+import BaseVerifier from '~/router/BaseVerifier'
+
+function VerifyCsrfToken (...payload) {
     /**
      * The URIs that should be excluded from CSRF verification.
      *
      * @var array
      */
     const except = [
-    //
+        //
     ];
 
-    return next();
+    return new BaseVerifier(except, ...payload)
 }
 
 module.exports = VerifyCsrfToken;
