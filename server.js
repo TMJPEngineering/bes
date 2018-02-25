@@ -20,7 +20,7 @@ class Server {
         sockets(io);
 
         server.listen(port, host, () => {
-            logger(`Server listening on ${url}, Ctrl+C to stop`, LOGGER_TYPE.INFO);
+            logger(`Server listening on ${url} at port ${port}, Ctrl+C to stop`, LOGGER_TYPE.INFO);
         });
 
         return server;

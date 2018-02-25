@@ -19,8 +19,8 @@ export default {
             host: env.DB_HOST || 'mongodb',
             username: env.DB_USERNAME || 'localhost',
             password: env.DB_PASSWORD || '',
-            prefix: '',
-            uri: ''
+            prefix: env.DB_PREFIX || '',
+            uri: env.MONGODB_URI || env.DB_URI || '' // MONGODB_URI - Default name for Heroku
         }
         // mysql: {
         // driver: '',
