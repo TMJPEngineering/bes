@@ -9,6 +9,8 @@ import database from '~/config/database';
 import logger from '~/config/logger';
 import modules from '~/config/modules';
 
+import Model from '~/modules/Shared/Models/SharedModel';
+
 import * as translation from './translation';
 
 let root = path.dirname(__dirname);
@@ -103,6 +105,7 @@ global.Models = (module) => {
             throw module + ' module not found.';
         }
 
+        Object.assign(model, Model);
         return model;
     } catch (err) {
         throw module + ' module not found.';
