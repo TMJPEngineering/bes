@@ -1,1 +1,1 @@
-web: npm run prod && npm start
+web: npm run setup
