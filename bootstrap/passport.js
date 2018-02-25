@@ -4,13 +4,12 @@ import passport from 'passport';
 import LocalStrategy from 'passport-local';
 
 export default () => {
-    let User = new Models('User');
-
     // Local Passport
     passport.use(new LocalStrategy({
         'usernameField': 'username',
         'passwordField': 'password'
     }, (username, password, done) => {
+        let User = new Models('User');
         User.findOne({ username }, (err, user) => {
             if (err) return done(err);
             if (!user) return done(null, false);
