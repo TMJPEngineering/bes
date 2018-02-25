@@ -1,4 +1,4 @@
-import BaseVerifier from '~/router/BaseVerifier'
+import { BaseVerifier } from 'bes-middleware';
 
 function VerifyCsrfToken (...payload) {
     /**
