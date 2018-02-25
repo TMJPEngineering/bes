@@ -2,11 +2,14 @@ import { Router } from 'bes-routing';
 import { helpers } from 'bes-utils';
 import chalk from 'chalk';
 import path from 'path';
+import _ from 'lodash';
 
 import app from '~/config/app';
 import database from '~/config/database';
 import logger from '~/config/logger';
 import modules from '~/config/modules';
+
+import * as translation from './translation';
 
 let root = path.dirname(__dirname);
 let connection = database.connections[database.default];
@@ -94,7 +97,7 @@ global.Models = (module) => {
 
         if (moduleSplit.length > 1 && moduleSplit.length <= 2) {
             model = require(root + '/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
-        } else if (moduleSplit.length == 1) {
+        } else if (moduleSplit.length === 1) {
             model = require(root + '/modules/' + moduleSplit[0] + '/Models/');
         } else {
             throw module + ' module not found.';
@@ -116,3 +119,10 @@ global.Schema = connection.schema
  */
 global.DB = connection.driver
 
+/**
+ * Translation based on app locale
+ */
+global.trans = (name) => {
+    let object = translation[app.locale];
+    return _.get(object, name);
+};

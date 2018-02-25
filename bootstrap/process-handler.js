@@ -30,7 +30,7 @@ export default () => {
     function runCallbacks(error) {
         let collections = Kernel.render;
         let root = path.dirname(require.main.filename) + '/';
-        if (collections.length == 0) {
+        if (collections.length === 0) {
             require(root + Kernel.fallback)(error);
         } else {
             for (let key in collections) {

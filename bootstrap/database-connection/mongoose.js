@@ -3,15 +3,13 @@
 import bluebird from 'bluebird';
 import sharedSchema from '~/modules/Shared/Models/SharedSchema';
 
-export default () => {
-    const connection = config.database.connections[config.database.default];
+export const mongoose = (connection) => {
     const Mongoose = connection.driver;
     const database = Mongoose.connection;
     const credentials = connection.password
         ? connection.username + ':' + connection.password
         : connection.username;
-    
-    let uri = config.app.uri
+    const uri = config.app.uri
         ? config.app.uri
         : connection.host + '://' + credentials + '/' + connection.database;
 
