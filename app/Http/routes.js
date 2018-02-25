@@ -8,7 +8,7 @@ export default app => {
 
     // Call your module routes here
     // e.g. UserRoutes(), AuthRoutes()
-    Route.group({ middleware: ['web']}, () => {
+    Route.group({ middleware: ['web'] }, () => {
         WelcomeRoutes();
 
         // Logout function

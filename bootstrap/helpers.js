@@ -1,3 +1,5 @@
+import { Router } from 'bes-routing';
+import { helpers } from 'bes-utils';
 import chalk from 'chalk';
 import path from 'path';
 
@@ -5,11 +7,11 @@ import app from '~/config/app';
 import database from '~/config/database';
 import logger from '~/config/logger';
 import modules from '~/config/modules';
-import Router from '~/vendor/router';
-import Kernel from '~/app/Http/Kernel';
 
 let root = path.dirname(__dirname);
 let connection = database.connections[database.default];
+
+Object.assign(global, helpers);
 
 /**
  * TMJ config variables
@@ -70,27 +72,6 @@ global.logger = (message, type) => {
 global.LOGGER_TYPE = logger.type;
 
 /**
- * Add suffix `controller` per file. e.g. `welcome.controller`
- * @return {String}
- */
-global.toController = value => value.replace(/([a-z](?=[A-Z]))Controller/g, '$1.controller').toLowerCase();
-
-/**
- * Trim slashes
- * @return {String}
- */
-global.trimUri = value => value.replace(/\/$/, '');
-
-/**
- * View helper to load HTML files
- * @return {File}
- */
-global.tmj_view = (file, res) => {
-    let filename = file.replace(/\./g, '/');
-    res.sendFile(`${root}/resources/views/${filename}.html`);
-};
-
-/**
  * Global Route
  * @return {Object}
  */
@@ -101,31 +82,6 @@ global.Route = Router;
  */
 global.namespace = (moduleName) => {
     Router.setNamespace(moduleName);
-};
-
-/**
- * Controller helper to load new controller class
- */
-global.BaseController = (controllerPath, method) => {
-    const controller = require(controllerPath);
-    return controller[method];
-};
-
-/**
- * Global middleware
- */
-global.Middleware = (value) => {
-    const rootPath = root + '/';
-
-    if (Kernel.middlewareGroups.hasOwnProperty(value)) {
-        let middlewareGroups = [];
-        Kernel.middlewareGroups[value].forEach((filepath) => {
-            middlewareGroups.push(require(rootPath + filepath));
-        });
-        return middlewareGroups;
-    }
-
-    return [];
 };
 
 /**
