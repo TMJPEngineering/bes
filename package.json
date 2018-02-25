@@ -4,14 +4,13 @@
   "repository": "https://github.com/TMJPEngineering/bes.git",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node server",
+    "start": "babel-node server",
     "setup": "bash setup.sh",
-    "reload": "./node_modules/.bin/nodemon server --exec babel-node",
-    "dev": "./node_modules/.bin/cross-env NODE_ENV=development webpack",
-    "prod": "./node_modules/.bin/cross-env NODE_ENV=production webpack -p",
-    "watch": "./node_modules/.bin/cross-env NODE_ENV=development webpack --watch",
-    "test": "karma start",
-    "postinstall": "cp .env.example .env"
+    "reload": "nodemon server --exec babel-node",
+    "dev": "cross-env NODE_ENV=development webpack",
+    "prod": "cross-env NODE_ENV=production webpack -p",
+    "watch": "cross-env NODE_ENV=development webpack --watch",
+    "test": "karma start"
   },
   "keywords": [
     "nodejs",
