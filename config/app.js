@@ -26,7 +26,7 @@ export default {
     /**
      * Application Hostname
      */
-    host: env.APP_HOST || 'localhost',
+    host: env.APP_HOST || '',
 
     /**
      * Application Port

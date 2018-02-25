@@ -1,15 +1,22 @@
+import { Router } from 'bes-routing';
+import { helpers } from 'bes-utils';
 import chalk from 'chalk';
 import path from 'path';
+import _ from 'lodash';
 
 import app from '~/config/app';
 import database from '~/config/database';
 import logger from '~/config/logger';
 import modules from '~/config/modules';
-import Router from '~/vendor/router';
-import Kernel from '~/app/Http/Kernel';
+
+import Model from '~/modules/Shared/Models/SharedModel';
+
+import * as translation from './translation';
 
 let root = path.dirname(__dirname);
 let connection = database.connections[database.default];
+
+Object.assign(global, helpers);
 
 /**
  * TMJ config variables
@@ -70,27 +77,6 @@ global.logger = (message, type) => {
 global.LOGGER_TYPE = logger.type;
 
 /**
- * Add suffix `controller` per file. e.g. `welcome.controller`
- * @return {String}
- */
-global.toController = value => value.replace(/([a-z](?=[A-Z]))Controller/g, '$1.controller').toLowerCase();
-
-/**
- * Trim slashes
- * @return {String}
- */
-global.trimUri = value => value.replace(/\/$/, '');
-
-/**
- * View helper to load HTML files
- * @return {File}
- */
-global.tmj_view = (file, res) => {
-    let filename = file.replace(/\./g, '/');
-    res.sendFile(`${root}/resources/views/${filename}.html`);
-};
-
-/**
  * Global Route
  * @return {Object}
  */
@@ -104,31 +90,6 @@ global.namespace = (moduleName) => {
 };
 
 /**
- * Controller helper to load new controller class
- */
-global.BaseController = (controllerPath, method) => {
-    const controller = require(controllerPath);
-    return controller[method];
-};
-
-/**
- * Global middleware
- */
-global.Middleware = (value) => {
-    const rootPath = root + '/';
-
-    if (Kernel.middlewareGroups.hasOwnProperty(value)) {
-        let middlewareGroups = [];
-        Kernel.middlewareGroups[value].forEach((filepath) => {
-            middlewareGroups.push(require(rootPath + filepath));
-        });
-        return middlewareGroups;
-    }
-
-    return [];
-};
-
-/**
  * Global models
  */
 global.Models = (module) => {
@@ -138,12 +99,13 @@ global.Models = (module) => {
 
         if (moduleSplit.length > 1 && moduleSplit.length <= 2) {
             model = require(root + '/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
-        } else if (moduleSplit.length == 1) {
+        } else if (moduleSplit.length === 1) {
             model = require(root + '/modules/' + moduleSplit[0] + '/Models/');
         } else {
             throw module + ' module not found.';
         }
 
+        Object.assign(model, Model);
         return model;
     } catch (err) {
         throw module + ' module not found.';
@@ -160,3 +122,10 @@ global.Schema = connection.schema
  */
 global.DB = connection.driver
 
+/**
+ * Translation based on app locale
+ */
+global.trans = (name) => {
+    let object = translation[app.locale];
+    return _.get(object, name);
+};

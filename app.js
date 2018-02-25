@@ -8,7 +8,7 @@ import routes from './app/Http/routes';
 import processHandler from './bootstrap/process-handler';
 import compress from './bootstrap/compress';
 import coreMiddleware from './bootstrap/core-middleware';
-import mongoose from './bootstrap/mongoose';
+import database from './bootstrap/database';
 import databaseSeeder from './bootstrap/database-seeder';
 import passport from './bootstrap/passport';
 
@@ -30,7 +30,7 @@ export default () => {
     // This library uses for security purposes like session, crsf, passport, and helmet.
     coreMiddleware(app);
     // Database configuration
-    mongoose();
+    database();
     // Database Seeder
     databaseSeeder();
     // Set of routes in an application
