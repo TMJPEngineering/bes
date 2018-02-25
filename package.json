@@ -20,7 +20,7 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "bes-middleware": "^1.0.0",
-    "bes-routing": "^1.0.3",
+    "bes-routing": "^1.0.4",
     "bes-utils": "^1.0.4",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.0.0",
