@@ -31,7 +31,7 @@ export default {
     /**
      * Application Port
      */
-    port: env.PORT || env.APP_PORT || env.NODE_PORT || 3000,
+    port: process.env.PORT || env.APP_PORT || 3000,
 
     /**
      * Application Locale Configuration
