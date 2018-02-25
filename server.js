@@ -14,7 +14,7 @@ class Server {
         const url = (config.app.env === 'production')
             ? config.app.url
             : `${config.app.url}:${port}`;
-        
+
         // Socket configuration
         const io = socketIo(server);
         sockets(io);
