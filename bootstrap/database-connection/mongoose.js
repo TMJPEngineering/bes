@@ -9,8 +9,8 @@ export const mongoose = (connection) => {
     const credentials = connection.password
         ? connection.username + ':' + connection.password
         : connection.username;
-    const uri = config.app.uri
-        ? config.app.uri
+    const uri = connection.uri
+        ? connection.uri
         : connection.host + '://' + credentials + '/' + connection.database;
 
     database.on('error', error => logger(error, LOGGER_TYPE.DANGER));
