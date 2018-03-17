@@ -1,8 +1,9 @@
 /.sass-cache
 /public
-/storage
 /node_modules
 /bower_components
+/logs
 package-lock.json
 npm-debug.log
 .env
+*.log

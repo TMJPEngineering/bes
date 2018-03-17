@@ -21,9 +21,9 @@ export default () => {
 
     function onEnd(error) {
         // run process before closing
-        logger('Before process end, running all registered callbacks.');
+        logger.warn('Before process end, running all registered callbacks.');
         runCallbacks(error);
-        logger('All registered callbacks have been run, process will now end.');
+        logger.warn('All registered callbacks have been run, process will now end.');
         // process.exit(0);
     }
 

@@ -6,7 +6,7 @@ class UserModel {
     constructor() {
         this.query = undefined;
         this.schema = UserSchema;
-        logger(`User`);
+        logger.debug(`User`);
     }
 }
 

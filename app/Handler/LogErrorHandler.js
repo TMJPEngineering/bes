@@ -1,4 +1,4 @@
-/* global logger, LOGGER_TYPE */
+/* global logger */
 
 import app from '~/config/app';
 import ErrorMessageBag from '~/app/Exception/MessageBags/ErrorMessageBag';
@@ -15,21 +15,21 @@ class LogErrorHandler {
     _showErrorMessage(error, errorInstance) {
         if (error.name === String(errorInstance.constructor.name)) {
             let errorMessageBag = new ErrorMessageBag(error);
-            logger(errorMessageBag.getMessage(), LOGGER_TYPE.DANGER);
+            logger.error(errorMessageBag.getMessage());
         }
     }
 
     _showErrorToString(error, errorInstance) {
         if (error.name === String(errorInstance.constructor.name)) {
             let errorMessageBag = new ErrorMessageBag(error);
-            logger(errorMessageBag.toString(), LOGGER_TYPE.DANGER);
+            logger.error(errorMessageBag.toString());
         }
     }
 
     _showStacktrace(error, errorInstance) {
         if (error.name === String(errorInstance.constructor.name)) {
             let errorMessageBag = new ErrorMessageBag(error);
-            logger(errorMessageBag.getStackTrace(), LOGGER_TYPE.DANGER);
+            logger.error(errorMessageBag.getStackTrace());
         }
     }
 

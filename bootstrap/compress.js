@@ -1,4 +1,4 @@
-import compression from 'compression';
+import compression, { filter } from 'compression';
 
 export default app => {
     // Gzip compression
@@ -8,5 +8,5 @@ export default app => {
 function shouldCompress(request, response) {
     if (request.headers['x-no-compression']) return false;
 
-    return compression.filter(request, response);
+    return filter(request, response);
 }
