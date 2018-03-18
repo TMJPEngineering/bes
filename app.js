@@ -15,11 +15,11 @@ import passport from './bootstrap/passport';
 export default () => {
     let app = express();
 
-    // processHandler();
+    processHandler();
 
     // Gzip Compress for compressing all accessed files
     compress(app);
-    
+
     // Build JS & CSS
     app.use('/dist', expressStatic(`${__dirname}/public/dist`));
     // Build Fonts

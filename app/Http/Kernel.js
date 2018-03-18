@@ -9,12 +9,10 @@ export default {
     middleware: [
         'app/Http/Middleware/Core/BodyParser',
         'app/Http/Middleware/Core/CookieParser',
-        'app/Http/Middleware/Core/GenerateCsrfToken',
         'app/Http/Middleware/Core/Helmet',
         'app/Http/Middleware/Core/MethodOverride',
         'app/Http/Middleware/Core/CookieSession',
         'app/Http/Middleware/Core/Passport',
-        'app/Http/Middleware/Core/RequestCsrfToken',
         'app/Http/Middleware/Core/ErrorHandler'
     ],
 

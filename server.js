@@ -1,4 +1,4 @@
-/* global config, logger, LOGGER_TYPE */
+/* global config */
 
 import { createServer } from 'http';
 import socketIo from 'socket.io';
@@ -20,7 +20,7 @@ class Server {
         sockets(io);
 
         server.listen(port, host, () => {
-            logger(`Server listening on ${url} at port ${port}, Ctrl+C to stop`, LOGGER_TYPE.INFO);
+            console.log(`Server listening on ${url} at port ${port}, Ctrl+C to stop`);
         });
 
         return server;

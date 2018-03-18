@@ -6,7 +6,7 @@ export default {
     /**
      * Database Default Connection
      */
-    default: env.DB_CONNECTION || 'mongoose',
+    default: env.DB_CONNECTION || '',
 
     /**
      * Database Connections

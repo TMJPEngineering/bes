@@ -1,6 +1,5 @@
 import { Router } from 'bes-routing';
 import { helpers } from 'bes-utils';
-import chalk from 'chalk';
 import path from 'path';
 import _ from 'lodash';
 
@@ -42,41 +41,6 @@ global.getCookie = (cookie, name) => {
 };
 
 /**
- * Helper for chalk
- * @param {String} message
- * @param {String} color
- * @return {String}
- */
-global.paint = (message, color) => {
-    return chalk[color](message);
-};
-
-/**
- * Chalk colors
- * @return {Object}
- */
-global.LOGGER_COLOR = logger.color;
-
-/**
- * Helper for console
- */
-global.logger = (message, type) => {
-    if (type === undefined) {
-        type = 'log';
-    }
-    message = new Date().toLocaleString() + ' [' + type.toUpperCase() + ']: ' + message;
-    if (app.debug === 'true') {
-        console[type](global.paint(message, global.LOGGER_COLOR[type]));
-    }
-};
-
-/**
- * Logger type for console
- * @return {Object}
- */
-global.LOGGER_TYPE = logger.type;
-
-/**
  * Global Route
  * @return {Object}
  */
@@ -115,12 +79,12 @@ global.Models = (module) => {
 /**
  * Global Schema
  */
-global.Schema = connection.schema
+if (typeof connection !== 'undefined') global.Schema = connection.schema
 
 /**
  * Global DB
  */
-global.DB = connection.driver
+if (typeof connection !== 'undefined') global.DB = connection.driver
 
 /**
  * Translation based on app locale

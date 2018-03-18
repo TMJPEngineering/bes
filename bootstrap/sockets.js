@@ -2,7 +2,7 @@
 
 export default io => {
     io.on('connection', socket => {
-        logger('Socket connection started');
-        logger(`Socket ID: ${socket.id}`);
+        logger.info('Socket connection started');
+        logger.info(`Socket ID: ${socket.id}`);
     });
 };

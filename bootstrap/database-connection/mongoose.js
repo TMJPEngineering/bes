@@ -1,4 +1,4 @@
-/* global logger, config, LOGGER_TYPE */
+/* global logger */
 
 import bluebird from 'bluebird';
 import sharedSchema from '~/modules/Shared/Models/SharedSchema';
@@ -13,9 +13,9 @@ export const mongoose = (connection) => {
         ? connection.uri
         : connection.host + '://' + credentials + '/' + connection.database;
 
-    database.on('error', error => logger(error, LOGGER_TYPE.DANGER));
+    database.on('error', error => logger.error(error));
     database.once('open', () => {
-        logger('Connected to database')
+        console.log('Connected to database')
     });
 
     Mongoose.Promise = bluebird;

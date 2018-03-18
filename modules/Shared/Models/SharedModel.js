@@ -7,18 +7,18 @@ let Model = {
 
 function findOne(payload, callback) {
     if (payload) {
-        logger(`findOne(${JSON.stringify(payload)})`);
+        logger.debug(`findOne(${JSON.stringify(payload)})`);
         this.query = this.schema.findOne(payload, callback);
         return this;
     }
 
-    logger(`findOne()`);
+    logger.debug(`findOne()`);
     this.query = this.schema.findOne();
     return this;
 }
 
 function execute() {
-    logger(`execute()`);
+    logger.debug(`execute()`);
     return this.query.exec(_exec);
 }
 
