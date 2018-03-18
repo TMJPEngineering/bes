@@ -6,7 +6,7 @@ export default {
      *
      * Available Settings: "stack", "long-message", "message"
      */
-    log: 'message',
+    log: 'stack',
 
     /**
      * Application Environment

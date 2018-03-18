@@ -5,7 +5,6 @@ import _ from 'lodash';
 import app from '~/config/app';
 import database from '~/config/database';
 import logger from '~/config/logger';
-import modules from '~/config/modules';
 
 import * as translation from './translation';
 
@@ -20,8 +19,7 @@ Object.assign(global, helpers);
 global.config = {
     app,
     database,
-    logger,
-    modules
+    logger
 };
 
 /**

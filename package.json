@@ -21,7 +21,7 @@
     "bes-logger": "^1.0.3",
     "bes-middleware": "^1.0.4",
     "bes-routing": "^1.0.7",
-    "bes-utils": "^1.0.8",
+    "bes-utils": "^1.0.9",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.0.0",
     "compression": "^1.7.2",
