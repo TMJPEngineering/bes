@@ -15,7 +15,7 @@ export const mongoose = (connection) => {
 
     database.on('error', error => logger.error(error));
     database.once('open', () => {
-        console.log('Connected to database')
+        console.log('Connected to database');
     });
 
     Mongoose.Promise = bluebird;

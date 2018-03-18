@@ -2,11 +2,11 @@
 
 export default {
     /**
-     * Logging Configuration
+     * Application Log Types
      *
      * Available Settings: "stack", "long-message", "message"
      */
-    log: 'stack',
+    log: 'message',
 
     /**
      * Application Environment
