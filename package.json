@@ -60,7 +60,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-spec-reporter": "0.0.31",
     "lodash": "^4.17.5",
-    "node-sass": "^4.8.2",
+    "node-sass": "^4.8.3",
     "nodemon": "^1.17.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
