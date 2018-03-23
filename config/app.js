@@ -2,8 +2,9 @@
 
 export default {
     /**
-     * Logging Configuration
+     * Application Log Types
      *
+     * Logs to be show by type of log message
      * Available Settings: "stack", "long-message", "message"
      */
     log: 'stack',
@@ -15,6 +16,9 @@ export default {
 
     /**
      * Application Debug Mode
+     *
+     * When the application is in debug mode,
+     * it will show the logs upon running the system.
      */
     debug: env.APP_DEBUG || false,
 
@@ -35,6 +39,8 @@ export default {
 
     /**
      * Application Locale Configuration
+     *
+     * This is for the language to be used in the system.
      */
     locale: env.APP_LOCALE || 'en'
 };

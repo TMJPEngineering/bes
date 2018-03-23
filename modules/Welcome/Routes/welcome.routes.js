@@ -1,7 +1,7 @@
-/* global Route, config, namespace */
+/* global Route, modules, namespace */
 
 export default () => {
-    namespace(config.modules.welcome);
+    namespace(modules.welcome);
 
     Route.view('/', 'welcome.index', ['guest']);
 };

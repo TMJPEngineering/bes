@@ -1,11 +1,11 @@
 /* global logger */
 
 import UserSchema from './UserSchema';
+import Model from '~/modules/Shared/Models/QueryBuilder';
 
-class UserModel {
+class UserModel extends Model {
     constructor() {
-        this.query = undefined;
-        this.schema = UserSchema;
+        super(UserSchema);
         logger.debug(`User`);
     }
 }

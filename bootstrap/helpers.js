@@ -1,18 +1,13 @@
 import { Router } from 'bes-routing';
 import { helpers } from 'bes-utils';
-import path from 'path';
 import _ from 'lodash';
 
 import app from '~/config/app';
 import database from '~/config/database';
 import logger from '~/config/logger';
-import modules from '~/config/modules';
-
-import Model from '~/modules/Shared/Models/SharedModel';
 
 import * as translation from './translation';
 
-let root = path.dirname(__dirname);
 let connection = database.connections[database.default];
 
 Object.assign(global, helpers);
@@ -24,8 +19,7 @@ Object.assign(global, helpers);
 global.config = {
     app,
     database,
-    logger,
-    modules
+    logger
 };
 
 /**
@@ -62,14 +56,13 @@ global.Models = (module) => {
         let model;
 
         if (moduleSplit.length > 1 && moduleSplit.length <= 2) {
-            model = require(root + '/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
+            model = require('~/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
         } else if (moduleSplit.length === 1) {
-            model = require(root + '/modules/' + moduleSplit[0] + '/Models/');
+            model = require('~/modules/' + moduleSplit[0] + '/Models/');
         } else {
             throw module + ' module not found.';
         }
 
-        Object.assign(model, Model);
         return model;
     } catch (err) {
         throw module + ' module not found.';
