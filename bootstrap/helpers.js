@@ -56,9 +56,9 @@ global.Models = (module) => {
         let model;
 
         if (moduleSplit.length > 1 && moduleSplit.length <= 2) {
-            model = require(root + '/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
+            model = require('~/modules/' + moduleSplit[0] + '/Models/' + moduleSplit[1]);
         } else if (moduleSplit.length === 1) {
-            model = require(root + '/modules/' + moduleSplit[0] + '/Models/');
+            model = require('~/modules/' + moduleSplit[0] + '/Models/');
         } else {
             throw module + ' module not found.';
         }
