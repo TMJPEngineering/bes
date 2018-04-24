@@ -9,7 +9,6 @@ import processHandler from './bootstrap/process-handler';
 import compress from './bootstrap/compress';
 import coreMiddleware from './bootstrap/core-middleware';
 import database from './bootstrap/database';
-import databaseSeeder from './bootstrap/database-seeder';
 import passport from './bootstrap/passport';
 
 export default () => {
@@ -31,8 +30,6 @@ export default () => {
     coreMiddleware(app);
     // Database configuration
     database();
-    // Database Seeder
-    databaseSeeder();
     // Set of routes in an application
     routes(app);
     // Passport configuration

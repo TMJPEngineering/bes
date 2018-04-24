@@ -61,7 +61,6 @@ global.Models = (module) => {
             throw new Error(module + ' module not found.');
         }
 
-        // Object.assign(model, QueryBuilder)s
         return model;
     } catch (err) {
         throw new Error(module + ' module not found.');
