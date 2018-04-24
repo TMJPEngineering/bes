@@ -175,7 +175,10 @@ module.exports = {
         "padded-blocks": 0,             // enforce padding within blocks (off by default)
         "quote-props": 0,               // require quotes around object literal property names (off by default)
         "quotes": 0,                    // specify whether double or single quotes should be used
-        "semi": 0,                      // require or disallow use of semicolons instead of ASI
+        "semi": [
+            "error",
+            "always"
+        ],                      // require or disallow use of semicolons instead of ASI
         "sort-vars": 0,                 // sort variables within the same declaration block (off by default)
         "space-after-function-name": 0, // require a space after function names (off by default)
         "space-before-function-paren": 0, // replaces space-after-function-name

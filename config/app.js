@@ -36,11 +36,4 @@ export default {
      * Application Port
      */
     port: env.PORT || env.APP_PORT || 3000, // PORT - Default name for Heroku
-
-    /**
-     * Application Locale Configuration
-     *
-     * This is for the language to be used in the system.
-     */
-    locale: env.APP_LOCALE || 'en'
 };

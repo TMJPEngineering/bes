@@ -32,6 +32,31 @@ class QueryBuilder {
         return this;
     }
 
+    create (payload, callback) {
+        logger.debug('Create schema payload:', payload);
+        this.schema.create(payload, callback);
+        return this;
+    }
+
+    remove (payload, callback) {
+        logger.debug('Remove payload:', payload);
+        return this.schema.remove(payload, callback);
+    }
+
+    async save (payload, callback) {
+        logger.debug('Save schema payload:', payload);
+
+        // If length is undefined, the type of payload is object. If not, it must be an array.
+        if (payload.length === undefined) {
+            const schema = this.schema(payload);
+            await schema.save(payload, callback);
+            return schema;
+        }
+
+        await this.schema.insertMany(payload, callback);
+        return this;
+    }
+
     whereFieldInArray (field, value) {
         logger.debug(`where ${field} in ${JSON.stringify(value)}`);
         this.query.where(field).in(value);
@@ -41,6 +66,14 @@ class QueryBuilder {
     whereFieldNotEqualToValue (field, value) {
         logger.debug(`where ${field} not equal to ${value}`);
         this.query.where(field).ne(value);
+        return this;
+    }
+
+    with (collections = []) {
+        logger.debug(`with`, collections);
+        collections.forEach(collection => {
+            this.query.populate(collection);
+        });
         return this;
     }
 
@@ -75,7 +108,10 @@ function _findQuery (method, payload, select, callback) {
 }
 
 function _exec (error, data) {
-    if (error) return error;
+    if (error) {
+        logger.error(error);
+        return error;
+    }
     return data;
 }
 

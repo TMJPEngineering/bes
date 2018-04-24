@@ -10,7 +10,7 @@ function VerifyCsrfToken (...payload) {
         //
     ];
 
-    return new BaseVerifier(except, ...payload)
+    return new BaseVerifier(except, ...payload);
 }
 
 module.exports = VerifyCsrfToken;
