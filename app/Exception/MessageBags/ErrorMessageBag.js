@@ -6,7 +6,7 @@ var ErrorMessageBag = function (_error) {
 };
 
 ErrorMessageBag.prototype.setError = function (_error) {
-    error = _error
+    error = _error;
 };
 
 ErrorMessageBag.prototype.getMessage = function() {

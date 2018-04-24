@@ -37,6 +37,6 @@ export default () => {
     routes(app);
     // Passport configuration
     passport();
-    
+
     return app;
-}
+};

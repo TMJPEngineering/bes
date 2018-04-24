@@ -27,4 +27,4 @@ export default {
         auth: ['app/Http/Middleware/Authenticate'],
         guest: ['app/Http/Middleware/RedirectIfAuthenticated']
     }
-}
+};

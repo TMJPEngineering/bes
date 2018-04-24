@@ -1,12 +1,10 @@
 import { Router } from 'bes-routing';
 import { helpers } from 'bes-utils';
-import _ from 'lodash';
+import { trans } from 'bes-translation';
 
 import app from '~/config/app';
 import database from '~/config/database';
 import logger from '~/config/logger';
-
-import * as translation from './translation';
 
 let connection = database.connections[database.default];
 
@@ -60,29 +58,29 @@ global.Models = (module) => {
         } else if (moduleSplit.length === 1) {
             model = require('~/modules/' + moduleSplit[0] + '/Models/');
         } else {
-            throw module + ' module not found.';
+            throw new Error(module + ' module not found.');
         }
 
+        // Object.assign(model, QueryBuilder)s
         return model;
     } catch (err) {
-        throw module + ' module not found.';
+        throw new Error(module + ' module not found.');
     }
 };
 
 /**
  * Global Schema
  */
-if (typeof connection !== 'undefined') global.Schema = connection.schema
+if (typeof connection !== 'undefined') global.Schema = connection.schema;
 
 /**
  * Global DB
  */
-if (typeof connection !== 'undefined') global.DB = connection.driver
+if (typeof connection !== 'undefined') global.DB = connection.driver;
 
 /**
- * Translation based on app locale
+ * Translation based on bes translation
+ * For more info: Check on this repository
+ * https://github.com/kingleuther/bes-translation
  */
-global.trans = (name) => {
-    let object = translation[app.locale];
-    return _.get(object, name);
-};
+global.trans = trans;

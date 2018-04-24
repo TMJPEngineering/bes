@@ -1,4 +1,4 @@
-import Logger from 'bes-logger/src/logger'
+import Logger from 'bes-logger/src/logger';
 
 /**
 * --------------------------------------------------------------------------
