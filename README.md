@@ -28,6 +28,7 @@ npm run setup
   - **npm run dev** (Run webpack in development mode)
   - **npm run prod** (Run webpack in production mode)
   - **npm run watch** (Watch all files)
+  - **npm run db:seed** (Import fake data)
 - Bootstrap 4 (Beta)
 - MVC Architecture
 - TDD (Using **karma** and **jasmine**)
@@ -102,8 +103,8 @@ You can also limit by using `only` or `except`. See example below:
 
 ```js
 export default () => {
-    namespace('Blog'); // or
-    namespace(config.modules.blog); // It must have a value inside modules (located in /config/modules.js)
+    namespace('User'); // or
+    namespace(modules.user); // Located in modules/User
     ...
     Route.resource('/user', 'UserController', ['client'], {
         only: ['index', 'show']
@@ -117,9 +118,9 @@ export default () => {
 ```js
 export default () => {
     namespace('Blog'); // or
-    namespace(config.modules.blog); // It must have a value inside modules (located in /config/modules.js)
+    namespace(modules.blog); // Located in modules/Blog
     ...
-    Route.resource('/api/blog', 'UserController', ['oauth'], {
+    Route.resource('/api/blog', 'BlogController', ['oauth'], {
         except: ['create', 'edit']
     });
     ...
@@ -131,7 +132,7 @@ export default () => {
 ```js
 export default () => {
     namespace('Home'); // or
-    namespace(config.modules.home); // It must have a value inside modules (located in /config/modules.js)
+    namespace(modules.home); // Located in modules/Home
     ...
     Route.view('/home', 'pages.home');
     // It says that route will load the html file in /resources/views/pages/home.html
@@ -148,6 +149,7 @@ Route.group({ prefix: 'lorem', middleware: ['foo', 'bar'] }, () => {
    ...
    // Insert route methods here
    ...
+   Route.endGroup();
 });
 ```
 
