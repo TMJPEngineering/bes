@@ -14,10 +14,13 @@ const jsPath = './resources/assets/js';
 const outputPath = 'public/dist';
 
 module.exports = {
-    entry: [
-        jsPath + '/app.js',
-        sassPath + '/app.scss'
-    ],
+    entry: {
+        vendor: ['bootstrap'],
+        app: [
+            jsPath + '/app.js',
+            sassPath + '/app.scss'
+        ]
+    },
     output: {
         path: path.resolve(__dirname, outputPath),
         filename: '[name].js'
