@@ -35,5 +35,5 @@ export default {
     /**
      * Application Port
      */
-    port: env.PORT || env.APP_PORT || 3000, // PORT - Default name for Heroku
+    port: process.env.PORT || env.APP_PORT || 3000, // process.env.PORT - Default name for Heroku (auto-generated)
 };
