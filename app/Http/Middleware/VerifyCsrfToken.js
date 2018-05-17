@@ -1,16 +1,18 @@
 import { BaseVerifier } from 'bes-middleware';
 
-function VerifyCsrfToken (...payload) {
-    /**
-     * The URIs that should be excluded from CSRF verification.
-     *
-     * @var array
-     */
-    const except = [
-        //
-    ];
+class VerifyCsrfToken {
+    handle(...payload) {
+        /**
+         * The URIs that should be excluded from CSRF verification.
+         *
+         * @var array
+         */
+        let except = [
+            //
+        ];
 
-    return new BaseVerifier(except, ...payload);
+        return new BaseVerifier(except, ...payload);
+    }
 }
 
-module.exports = VerifyCsrfToken;
+export default VerifyCsrfToken;

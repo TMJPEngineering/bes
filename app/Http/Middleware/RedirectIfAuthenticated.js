@@ -1,8 +1,10 @@
-function RedirectIfAuthenticated (request, response, next) {
-    if (request.user != undefined) {
-        response.redirect('/');
+class RedirectIfAuthenticated {
+    handle (request, response, next) {
+        if (request.user != undefined) {
+            response.redirect('/');
+        }
+        return next();
     }
-    return next();
 }
 
-module.exports = RedirectIfAuthenticated;
+export default RedirectIfAuthenticated;
