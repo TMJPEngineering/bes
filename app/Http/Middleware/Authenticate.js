@@ -1,9 +1,11 @@
-function Authenticate (request, response, next) {
-    if (!!request.session.passport && !!request.session.passport.user && !!request.user) {
-        return next();
-    }
+class Authenticate {
+    handle (request, response, next) {
+        if (!!request.session.passport && !!request.session.passport.user && !!request.user) {
+            return next();
+        }
 
-    response.redirect('/login');
+        response.redirect('/login');
+    }
 }
 
-module.exports = Authenticate;
+export default Authenticate;

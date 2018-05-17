@@ -1,7 +1,9 @@
+/* global request, response */
+
 class WelcomeController {
-    test(request, response) {
+    test() {
         response.send('Test');
     }
 }
 
-module.exports = new WelcomeController;
+export default WelcomeController;

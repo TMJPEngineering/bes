@@ -31,10 +31,14 @@ export default () => {
         let collections = Kernel.render;
         let root = path.dirname(require.main.filename) + '/';
         if (collections.length === 0) {
-            require(root + Kernel.fallback)(error);
+            let fallback = require(root + Kernel.fallback).default;
+            let fallbackInstance = new fallback;
+            fallbackInstance.handle(error);
         } else {
             for (let key in collections) {
-                require(root + collections[key])(error);
+                let collection = require(root + collections[key]).default;
+                let collectionInstance = new collection;
+                collectionInstance.handle(error);
             }
         }
     }

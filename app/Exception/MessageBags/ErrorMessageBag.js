@@ -1,40 +1,39 @@
-// Define a functional object to hold errors
-var error;
+class ErrorMessageBag {
+    constructor(error) {
+        this.error = error;
+    }
 
-var ErrorMessageBag = function (_error) {
-    error = _error;
-};
+    setError(error) {
+        this.error = error;
+    }
 
-ErrorMessageBag.prototype.setError = function (_error) {
-    error = _error;
-};
+    getMessage() {
+        return this.error.message;
+    }
 
-ErrorMessageBag.prototype.getMessage = function() {
-    return error.message;
-};
+    getName() {
+        return this.error.name;
+    }
 
-ErrorMessageBag.prototype.getName = function() {
-    return error.name;
-};
+    getFileName() {
+        return this.error.fileName;
+    }
 
-ErrorMessageBag.prototype.getFileName = function() {
-    return error.fileName;
-};
+    getLineNumber() {
+        return this.error.lineNumber;
+    }
 
-ErrorMessageBag.prototype.getLineNumber = function() {
-    return error.lineNumber;
-};
+    getColumnNumber() {
+        return this.error.columnNumber;
+    }
 
-ErrorMessageBag.prototype.getColumnNumber = function() {
-    return error.columnNumber;
-};
+    getStackTrace() {
+        return this.error.stack;
+    }
 
-ErrorMessageBag.prototype.getStackTrace = function() {
-    return error.stack;
-};
+    toString() {
+        return this.error.toString();
+    }
+}
 
-ErrorMessageBag.prototype.toString = function() {
-    return error.toString();
-};
-
-module.exports = ErrorMessageBag;
+export default ErrorMessageBag;
